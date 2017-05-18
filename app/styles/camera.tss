@@ -1,0 +1,102 @@
+'#cameraWin': {
+  bottom: 0,
+  backgroundColor: '#000000'
+}
+
+'#cameraContainer': {
+  width: Ti.UI.FILL,
+  height: Ti.UI.FILL,
+  backgroundColor: 'transparent'
+}
+
+'.topBackground': {
+  top: 0,
+  height: 70,
+  backgroundColor: '#000000'
+}
+
+'.displayContainer': {
+  top: 70,
+  bottom: 100,
+  width: Ti.UI.FILL,
+  height: Ti.UI.FILL,
+  backgroundColor: 'transparent'
+}
+
+'.option': {
+  bottom: 0,
+  width: Ti.UI.FILL,
+  height: 100,
+  backgroundColor: '#000000'
+}
+
+'.modeButton': {
+  title: '\uf0ae',
+  color: '#009900',
+  font: {
+    fontSize: 40,
+    fontFamily: 'FontAwesome'
+  },
+  left: 20,
+  width: 50,
+  height: 50
+}
+
+'.cameraBtn': {
+  title: '\uf030',
+  color: '#000000',
+  font: {
+    fontSize: 36,
+    fontFamily: 'FontAwesome'
+  },
+  width: 80,
+  height: 80,
+  backgroundColor: '#ffffff',
+  borderColor: '#f2f2f2',
+  borderRadius: 40,
+  borderWidth: 5
+}
+
+'#editPicture': {
+  bottom: 0,
+  width: Ti.UI.FILL,
+  height: Ti.UI.FILL,
+  backgroundColor: '#000000'
+}
+
+'#photo': {
+  top: 70,
+  bottom: 100,
+  width: Ti.UI.FILL,
+  height: Ti.UI.FILL,
+  backgroundColor: '#000000'
+}
+
+'.edit': {
+  layout: 'horizontal',
+  bottom: 0,
+  width: Ti.UI.FILL,
+  height: 100,
+  backgroundColor: '#000000',
+  bubbleParent: false
+}
+
+'.editBtn': {
+  top: 0,
+  height: Ti.UI.FILL
+}
+
+'.eventButton': {
+  left: 5,
+  right: 5,
+  borderRadius: 10,
+  borderColor: '#FFFFFF',
+  borderWidth: 3,
+  width: Ti.UI.FILL,
+  height: 50,
+  color: '#FFFFFF',
+  font: {
+    fontSize: 20,
+    fontWeight: 'bold'
+  }
+}

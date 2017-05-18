@@ -1,0 +1,69 @@
+'#addCropBtn': {
+  title: '\uf067',
+  font: {
+    fontSize: 24,
+    fontFamily: 'FontAwesome'
+  },
+  color: '#009900',
+  right: 10,
+  width: 40,
+  height: 40
+}
+
+'#recordPropertiesListView': {
+  top: 0,
+  width: Ti.UI.FILL,
+  height: Ti.UI.SIZE,
+  backgroundColor: '#FFFFFF',
+  separatorColor: '#E6E6E6',
+  listSeparatorInsets: {right: 0, left: 0}
+}
+
+'.recordPropertiesTemplate': {
+  width: Ti.UI.FILL,
+  height: 50,
+  backgroundColor: '#FFFFFF',
+  selectedBackgroundColor: '#FAFAFA',
+  accessoryType: Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE
+}
+
+'.itemContainer': {
+  layout: 'horizontal',
+  width: Ti.UI.FILL,
+  height: Ti.UI.FILL,
+  backgroundColor: '#FFFFFF'
+}
+
+'.iconContainer': {
+  width: 50,
+  height: Ti.UI.FILL,
+  backgroundColor: '#FFFFFF'
+}
+
+'.icon': {
+  font: {
+    fontSize: 18,
+    fontFamily: 'FontAwesome'
+  },
+  color: '#009900',
+  textAlign: 'center',
+  width: Ti.UI.SIZE,
+  height: Ti.UI.SIZE
+}
+
+'.messageContainer': {
+  width: Ti.UI.FILL,
+  height: Ti.UI.FILL,
+  backgroundColor: '#FFFFFF'
+}
+
+'.name': {
+  font: {
+    fontSize: 18
+  },
+  color: '#464646',
+  left: 10,
+  right: 10,
+  width: Ti.UI.FILL,
+  height: Ti.UI.SIZE
+}

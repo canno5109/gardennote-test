@@ -1,0 +1,97 @@
+'NavigationWindow[platform=ios]': {
+  navBarHidden: true,
+  backgroundColor: '#000000',
+  bubbleParent: false
+}
+
+'Window': {
+  navBarHidden: true,
+  backgroundColor: '#000000',
+  bubbleParent: false
+}
+
+'Label': {
+  font: {
+    fontFamily: 'uzura_font'
+  }
+}
+
+'Button': {
+  font: {
+    fontFamily: 'uzura_font'
+  }
+}
+
+'TextField': {
+  font: {
+    fontFamily: 'uzura_font'
+  }
+}
+
+'.body': {
+  layout: 'vertical',
+  width: Ti.UI.FILL,
+  height: Ti.UI.FILL,
+  backgroundColor: '#FFFFFF'
+}
+
+'.navBar': {
+  top: 0,
+  width: Ti.UI.FILL,
+  height: 80,
+  backgroundColor: '#FAFAFA',
+  viewShadowColor: '#B5B5B5',
+  viewShadowOffset: {
+    x: 0,
+    y: 0
+  },
+  viewShadowRadius: 1
+}
+
+'.navItems': {
+  top: 20,
+  width: Ti.UI.FILL,
+  height: Ti.UI.FILL,
+  backgroundColor: '#FAFAFA'
+}
+
+'.navTitle': {
+  textAlign: 'center',
+  color: '#464646',
+  width: Ti.UI.SIZE,
+  height: Ti.UI.SIZE,
+  font: {
+    fontSize: 28
+  }
+}
+
+'.container': {
+  top: 2,
+  width: Ti.UI.FILL,
+  height: Ti.UI.FILL,
+  backgroundColor: '#FFFFFF'
+}
+
+'.backBtn': {
+  title: '\uf053',
+  font: {
+    fontSize: 24,
+    fontFamily: 'FontAwesome'
+  },
+  color: '#009900',
+  left: 5,
+  width: 40,
+  height: 40
+}
+
+'.addBtn': {
+  title: '\uf067',
+  font: {
+    fontSize: 24,
+    fontFamily: 'FontAwesome'
+  },
+  color: '#009900',
+  right: 10,
+  width: 40,
+  height: 40
+}

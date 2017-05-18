@@ -1,0 +1,40 @@
+<Alloy>
+  <Collection src="crop" />
+  <Window onFocus="refreshCrop" onClose="reset">
+    <View class="body">
+      <View class="navBar">
+        <View class="navItems">
+          <Button class="backBtn" onSingletap="closeWin" />
+          <Label class="navTitle">作物一覧</Label>
+          <Button class="addBtn" onSingletap="addCrop" />
+        </View>
+      </View>
+      <View class="container">
+        <ListView id="cropListView" onItemclick="openEditCrop">
+          <Templates>
+            <ItemTemplate name="cropListTemplate" class="cropTemplate">
+              <View class="itemContainer">
+                <View class="nameContainer">
+                  <Label bindId="name" class="name" />
+                </View>
+                <View class="checkContainer">
+                  <Label bindId="check" class="check" />
+                </View>
+              </View>
+            </ItemTemplate>
+          </Templates>
+          <ListSection id="cropListSection"
+            dataCollection="crop"
+            dataTransform="transformCrop"
+            dataFilter="filterCrop"
+            dataFunction="updateCrop">
+            <ListItem template="cropListTemplate"
+              name:text="{name}"
+              cropId="{cropId}"
+              check:text="\uf00c"/>
+          </ListSection>
+        </ListView>
+      </View>
+    </View>
+  </Window>
+</Alloy>

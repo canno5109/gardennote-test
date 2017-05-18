@@ -1,0 +1,40 @@
+<Alloy>
+  <Tab title="記録設定" icon="/icons/cogs.png">
+    <NavigationWindow id="recordProperties">
+      <Window onFocus="updateItem">
+        <View class="body">
+          <View class="navBar">
+            <View class="navItems">
+              <Label class="navTitle">記録設定</Label>
+            </View>
+          </View>
+          <View class="container">
+            <ListView id="recordPropertiesListView" onItemclick="onItemClick">
+              <Templates>
+                <ItemTemplate name="recordPropertiesTemplate" class="recordPropertiesTemplate">
+                  <View class="itemContainer">
+                    <View class="iconContainer">
+                      <Label bindId="icon" class="icon" />
+                    </View>
+                    <View class="messageContainer">
+                      <Label bindId="name" class="name" />
+                    </View>
+                  </View>
+                </ItemTemplate>
+              </Templates>
+              <ListSection id="photoListSection">
+                <ListItem template="recordPropertiesTemplate"
+                  icon:text="\uf030"
+                  name:text="" />
+                <ListItem template="recordPropertiesTemplate"
+                  icon:text="\uf0b1"
+                  name:text="" />
+              </ListSection>
+            </ListView>
+          </View>
+        </View>
+      </Window>
+    </NavigationWindow>
+  </Tab>
+</Alloy>
+
