@@ -1,7 +1,7 @@
 var args = $.args;
 Alloy.Globals.recordPropertiesNavigationWindow = $.recordPropertiesNav;
 
-Alloy.Globals.updateRecordProperties = function() {
+function updateRecordProperties() {
   var cropItem = $.recordPropertiesListView.getSections()[0].getItemAt(0);
   var workItem = $.recordPropertiesListView.getSections()[0].getItemAt(1);
   cropItem.name.text =  Ti.App.Properties.getObject('recordProperties').name == null ? '作物が選択されていません' : Ti.App.Properties.getObject('recordProperties').name;
@@ -11,6 +11,7 @@ Alloy.Globals.updateRecordProperties = function() {
   $.recordPropertiesListView.getSections()[0].updateItemAt(0, cropItem, {animated: false});
   $.recordPropertiesListView.getSections()[0].updateItemAt(1, workItem, {animated: false});
 };
+Alloy.Globals.updateRecordProperties = updateRecordProperties;
 
 function onItemClick(e) {
   if (e.sectionIndex === 0) {
@@ -20,7 +21,9 @@ function onItemClick(e) {
         Alloy.Globals.recordPropertiesNavigationWindow.openWindow(cropListWin);
         break;
       case 1:
-        return;
+        if (Ti.App.Properties.getObject('recordProperties').name == null) {
+          return;
+        }
         var workListWin = Alloy.createController('workList').getView();
         Alloy.Globals.recordPropertiesNavigationWindow.openWindow(workListWin);
         break;

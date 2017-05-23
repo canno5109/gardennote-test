@@ -48,8 +48,11 @@ function savePhoto() {
     success: function() {
       var date = Alloy.Globals.moment().format('YYYY-MM-DD HH:mm:ss');
       Alloy.createModel('photoRecord', {
+        name: Ti.App.Properties.getObject('recordProperties').name,
         photo: photo,
-        date: date
+        date: date,
+        work: Ti.App.Properties.getObject('recordProperties').work,
+        note: null
       }).save(null, {
         success: function() {
           hideEditPicture();

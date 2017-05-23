@@ -22,12 +22,13 @@ if (!Ti.App.Properties.getBool('initialActivation')) {
   Alloy.createModel('work', {
     name: '摘果',
     cropId: 1
-  });
+  }).save();
 
   Ti.App.Properties.setObject('recordProperties', {
     name: 'りんご',
     work: '摘果',
-    cropId: 1
+    cropId: 1,
+    workId: 1
   });
   Ti.App.Properties.setBool('initialActivation', true);
 }

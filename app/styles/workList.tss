@@ -1,4 +1,54 @@
+'#workListView': {
+  top: 0,
+  width: Ti.UI.FILL,
+  height: Ti.UI.FILL,
+  backgroundColor: '#FFFFFF',
+  separatorColor: '#E6E6E6',
+  listSeparatorInsets: {right: 0, left: 0}
+}
 
-".container" : {
-  
+'.workTemplate': {
+  width: Ti.UI.FILL,
+  height: 100,
+  backgroundColor: '#FFFFFF',
+  selectionStyle: Ti.UI.iOS.ListViewCellSelectionStyle.NONE
+}
+
+'.itemContainer': {
+  width: Ti.UI.FILL,
+  height: Ti.UI.FILL,
+  backgroundColor: '#FFFFFF'
+}
+
+'.nameContainer': {
+  left: 0,
+  right: 100,
+  width: Ti.UI.FILL,
+  height: Ti.UI.FILL,
+  backgroundColor: '#FFFFFF'
+}
+
+'.checkContainer': {
+  right: 0,
+  width: 100,
+  height: Ti.UI.FILL,
+  backgroundColor: '#FFFFFF'
+}
+
+'.name': {
+  left: 20,
+  right: 10,
+  font: {
+    fontSize: 32
+  },
+  color: '#464646'
+}
+
+'.check': {
+  font: {
+    fontSize: 32,
+    fontFamily: 'FontAwesome'
+  },
+  color: '#6699FF',
+  textAlign: 'center'
 }

@@ -1,4 +1,33 @@
 <Alloy>
-	<View class="container">
-	</View>
+  <Collection src="work" />
+  <Window onClose="reset" onClick="hideKeyboard">
+    <View class="body">
+      <View class="navBar">
+        <View class="navItems">
+          <Button class="backBtn" onSingletap="closeWin" />
+          <Label class="navTitle">農作業編集</Label>
+          <Button class="deleteBtn" onSingletap="deleteWork" />
+        </View>
+      </View>
+      <View class="container">
+        <View class="inputContainer">
+          <View class="inputFieldContainer">
+            <TextField id="nameField" class="inputField" hintText="農作業名を入力" onClick="setKeyboardOwner" />
+          </View>
+          <Button id="updateBtn" onSingletap="update">農作業を更新</Button>
+          <Button id="selectWorkBtn" onSingletap="selectWork">この農作業を選択する</Button>
+        </View>
+      </View>
+    </View>
+
+    <AlertDialog id="errorDialog" title="お知らせ" message="名前を入力してください">
+    </AlertDialog>
+
+    <OptionDialog id="confirmDialog" onClick="confirmDeleteWork" title="農作業を削除しますか？" cancel="1">
+      <Options>
+        <Option>削除</Option>
+        <Option>キャンセル</Option>
+      </Options>
+    </OptionDialog>
+  </Window>
 </Alloy>

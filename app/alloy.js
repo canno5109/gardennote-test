@@ -5,3 +5,4 @@ Alloy.Globals.photoListNavigationWindow;
 Alloy.Globals.recordPropertiesNavigationWindow;
 Alloy.Globals.updateRecordProperties;
 Alloy.Globals.refreshCrop;
+Alloy.Globals.refreshWork;

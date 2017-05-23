@@ -1,7 +1,7 @@
 <Alloy>
   <Tab title="記録設定" icon="/icons/cogs.png">
     <NavigationWindow id="recordPropertiesNav">
-      <Window onOpen="Alloy.Globals.updateRecordProperties">
+      <Window onOpen="updateRecordProperties">
         <View class="body">
           <View class="navBar">
             <View class="navItems">

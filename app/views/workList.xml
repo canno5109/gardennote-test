@@ -1,4 +1,41 @@
 <Alloy>
-	<View class="container">
-	</View>
+  <Collection src="work" />
+  <Window onOpen="Alloy.Globals.refreshWork" onClose="reset">
+    <View class="body">
+      <View class="navBar">
+        <View class="navItems">
+          <Button class="backBtn" onSingletap="closeWin" />
+          <Label class="navTitle">農作業一覧</Label>
+          <Button class="addBtn" onSingletap="addWork" />
+        </View>
+      </View>
+      <View class="container">
+        <ListView id="workListView" onItemclick="openEditWork">
+          <Templates>
+            <ItemTemplate name="workListTemplate" class="workTemplate">
+              <View class="itemContainer">
+                <View class="nameContainer">
+                  <Label bindId="name" class="name" />
+                </View>
+                <View class="checkContainer">
+                  <Label bindId="check" class="check" />
+                </View>
+              </View>
+            </ItemTemplate>
+          </Templates>
+          <ListSection id="workListSection"
+            dataCollection="work"
+            dataTransform="transformWork"
+            dataFilter="filterWork"
+            dataFunction="updateWork">
+            <ListItem template="workListTemplate"
+              name:text="{name}"
+              workId="{workId}"
+              check:text="{check}" />
+          </ListSection>
+        </ListView>
+      </View>
+    </View>
+  </Window>
+
 </Alloy>

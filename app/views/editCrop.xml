@@ -23,7 +23,7 @@
     <AlertDialog id="errorDialog" title="お知らせ" message="名前を入力してください">
     </AlertDialog>
 
-    <OptionDialog id="confirmDialog" onClick="confirmDeleteCrop" title="作物名を削除しますか？" cancel="1">
+    <OptionDialog id="confirmDialog" onClick="confirmDeleteCrop" title="作物を削除しますか？" cancel="1">
       <Options>
         <Option>削除</Option>
         <Option>キャンセル</Option>

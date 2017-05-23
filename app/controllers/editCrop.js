@@ -10,6 +10,8 @@ if (Ti.App.Properties.getObject('recordProperties').cropId == cropId) {
 }
 
 function closeWin() {
+  Alloy.Globals.updateRecordProperties();
+  Alloy.Globals.refreshCrop();
   $.editCrop.close();
 };
 
@@ -51,11 +53,12 @@ function confirmDeleteCrop(e) {
       },
       success: function () {
         var cropModel = Alloy.Collections.crop.first();
-        if (cropModel.get('id') == Ti.App.Properties.getObject('recordProperties').cropId) {
+        if (cropId == Ti.App.Properties.getObject('recordProperties').cropId) {
           Ti.App.Properties.setObject('recordProperties', {
             name: null,
             work: null,
-            cropId: null
+            cropId: null,
+            workId: null
           });
         }
         cropModel.destroy();
@@ -66,25 +69,26 @@ function confirmDeleteCrop(e) {
 };
 
 function selectCrop() {
-    Alloy.Collections.crop.fetch({
-      query: {
-        statement: 'SELECT * FROM crop WHERE id = ?',
-        params: [cropId]
-      },
-      success: function () {
-        var cropModel = Alloy.Collections.crop.first();
-        Ti.App.Properties.setObject('recordProperties', {
-          name: cropModel.get('name'),
-          work: null,
-          cropId: cropModel.get('id')
-        });
-        $.selectCropBtn.setTouchEnabled(false);
-        $.selectCropBtn.setTitle('選択済み');
-        $.selectCropBtn.setOpacity(0.3);
-        Alloy.Globals.updateRecordProperties();
-        Alloy.Globals.refreshCrop();
-      }
-    });
+  Alloy.Collections.crop.fetch({
+    query: {
+      statement: 'SELECT * FROM crop WHERE id = ?',
+      params: [cropId]
+    },
+    success: function () {
+      var cropModel = Alloy.Collections.crop.first();
+      Ti.App.Properties.setObject('recordProperties', {
+        name: cropModel.get('name'),
+        work: null,
+        cropId: cropModel.get('id'),
+        workId: Ti.App.Properties.getObject('recordProperties').workId
+      });
+      $.selectCropBtn.setTouchEnabled(false);
+      $.selectCropBtn.setTitle('選択済み');
+      $.selectCropBtn.setOpacity(0.3);
+      Alloy.Globals.updateRecordProperties();
+      Alloy.Globals.refreshCrop();
+    }
+  });
 };
 
 // 表示されたキーボードのオーナーを格納

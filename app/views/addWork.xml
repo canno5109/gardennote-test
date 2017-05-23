@@ -1,4 +1,21 @@
 <Alloy>
-	<View class="container">
-	</View>
+  <Collection src="work" />
+  <Window onClose="reset" onClick="hideKeyboard">
+    <View class="body">
+      <View class="navBar">
+        <View class="navItems">
+          <Button class="backBtn" onSingletap="closeWin" />
+          <Label class="navTitle">農作業追加</Label>
+        </View>
+      </View>
+      <View class="container">
+        <ScrollView class="inputContainer">
+          <View class="inputFieldContainer">
+            <TextField id="nameField" class="inputField" hintText="農作業名を入力" onClick="setKeyboardOwner" />
+          </View>
+          <Button id="saveBtn" onSingletap="save">農作業を追加</Button>
+        </ScrollView>
+      </View>
+    </View>
+  </Window>
 </Alloy>
