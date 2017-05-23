@@ -49,6 +49,6 @@
     fontSize: 32,
     fontFamily: 'FontAwesome'
   },
-  color: '#009900',
+  color: '#6699FF',
   textAlign: 'center'
 }

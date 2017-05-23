@@ -1,6 +1,6 @@
 <Alloy>
   <Collection src="crop" />
-  <Window onFocus="refreshCrop" onClose="reset">
+  <Window onOpen="Alloy.Globals.refreshCrop" onClose="reset">
     <View class="body">
       <View class="navBar">
         <View class="navItems">
@@ -31,7 +31,7 @@
             <ListItem template="cropListTemplate"
               name:text="{name}"
               cropId="{cropId}"
-              check:text="\uf00c"/>
+              check:text="{check}"/>
           </ListSection>
         </ListView>
       </View>

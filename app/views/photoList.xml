@@ -1,8 +1,8 @@
 <Alloy>
   <Collection src="photoRecord" />
   <Tab title="写真一覧" icon="/icons/images.png">
-    <NavigationWindow id="photoList">
-      <Window id="photoListWin">
+    <NavigationWindow id="photoListNav">
+      <Window id="photoListWin" onOpen="setPhotoListItem">
         <View class="body">
           <View class="navBar">
             <View class="navItems">
@@ -28,17 +28,8 @@
                   </View>
                 </ItemTemplate>
               </Templates>
-              <ListSection id="photoListSection"
-                dataCollection="photoRecord"
-                dataTransform="transformPhotoList"
-                dataFilter="filterPhotoList"
-                dataFunction="updatePhotoList">
-                <ListItem template="photoListTemplate"
-                  photo:image="{photo}"
-                  name:text="{name}"
-                  work:text="{work}"
-                  date:text="{date}"
-                  note:text="{note}">
+              <ListSection id="photoListSection">
+                <ListItem template="photoListTemplate">
                 </ListItem>
               </ListSection>
             </ListView>
@@ -47,38 +38,64 @@
 
         <View id="photoDetailContainer">
           <View id="photoDetailTopOptionBtnContainer">
-            <Button id="closePhotoDetailBtn" onSingletap="hidePhotoDetailView" />
+            <Button class="closeBtn" onSingletap="hidePhotoDetailView" />
           </View>
-          <ScrollableView id="photoDetailScrollableView"
-            dataCollection="photoRecord"
-            dataTransform="transformPhotoDetail"
-            dataFilter="filterPhotoDetail"
-            dataFunction="updatePhotoDetail">
-            <View photoId="{id}">
-              <Label id="photoDetailDate"
-                text="{date}"/>
-              <Label id="photoDetailCropName"
-                text="{name}"/>
-              <ScrollView id="photoDetailScrollView"
-                minZoomScale="{zoomScale}"
-                zoomScale="{zoomScale}">
-                <ImageView id="photoDetail"
-                  image="{photo}"/>
-              </ScrollView>
-            </View>
+          <ScrollableView id="photoDetailScrollableView">
+
+
           </ScrollableView>
           <View id="photoDetailBottomOptionBtnContainer">
             <Button class="optionBtn" onSingletap="deleteCrop" />
           </View>
 
-          <View id="editPhotoContainer">
+          <View id="editPhotoContainer" onClick="hideKeyboard">
+            <View class="body">
+              <View class="navBar">
+                <View class="navItems">
+                  <Button class="backBtn" onSingletap="hideEditPhotoView" />
+                  <Label class="navTitle">写真情報編集</Label>
+                </View>
+              </View>
+              <View class="container">
+                <View id="pickerView" visible="fasle">
+                  <View id="toolbar">
+                    <Button id="cancel" onClick="hidePicker" />
+                    <Button id="done" onClick="doneClick" />
+                  </View>
+                  <Picker id="picker" />
+                </View>
+
+                <ScrollView class="editContainerScroll">
+                  <View class="field">
+                    <View class="input">
+                      <TextField id="nameField" class="inputField" hintText="作物名を選択" onClick="setKeyboardOwner" />
+                      <Button name="name" class="dropBtn" onSingletap="openPicker"  />
+                    </View>
+                    <Button name="name" class="resetBtn" onSingletap="resetValue" />
+                  </View>
+
+                  <View class="field">
+                    <View class="input">
+                      <TextField id="workField" class="inputField" hintText="農作業を選択" onClick="setKeyboardOwner" />
+                      <Button name="work" class="dropBtn" onSingletap="openPicker"  />
+                    </View>
+                    <Button name="work" class="resetBtn" onSingletap="resetValue" />
+                  </View>
+
+                  <View class="inputAreaContainer">
+                    <TextArea id="noteArea" class="inputArea" onClick="setKeyboardOwner" />
+                  </View>
+                  <Button id="saveBtn" onSingletap="updatePhotoData">写真情報を更新</Button>
+                </ScrollView>
+              </View>
+            </View>
           </View>
         </View>
 
-        <OptionDialog id="confirmDialog" onClick="confirmDeleteCrop" cancel="2">
+        <OptionDialog id="confirmDialog" onClick="confirmDeleteCrop" cancel="2" tintColor="#009900">
           <Options>
             <Option>写真情報を編集</Option>
-            <Option color="#FF0000">写真を削除</Option>
+            <Option>写真を削除</Option>
             <Option>キャンセル</Option>
           </Options>
         </OptionDialog>

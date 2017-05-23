@@ -24,6 +24,7 @@ function openEditCrop(e) {
 function transformCrop(model) {
   var transform = model.toJSON();
   transform.cropId = transform.id;
+  transform.check = transform.cropId == Ti.App.properties.getObject('recordProperties').cropId ? '\uf00c' : '';
   return transform;
 };
 
@@ -31,7 +32,7 @@ function filterCrop(collection) {
   return collection.models;
 };
 
-function refreshCrop() {
+Alloy.Globals.refreshCrop = function() {
   Alloy.Collections.crop.fetch();
   updateCrop();
 };

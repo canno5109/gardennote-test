@@ -28,6 +28,12 @@
   }
 }
 
+'TextArea': {
+  font: {
+    fontFamily: 'uzura_font'
+  }
+}
+
 '.body': {
   layout: 'vertical',
   width: Ti.UI.FILL,

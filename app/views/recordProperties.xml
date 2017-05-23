@@ -1,7 +1,7 @@
 <Alloy>
   <Tab title="記録設定" icon="/icons/cogs.png">
-    <NavigationWindow id="recordProperties">
-      <Window onFocus="updateItem">
+    <NavigationWindow id="recordPropertiesNav">
+      <Window onOpen="Alloy.Globals.updateRecordProperties">
         <View class="body">
           <View class="navBar">
             <View class="navItems">
@@ -25,10 +25,12 @@
               <ListSection id="photoListSection">
                 <ListItem template="recordPropertiesTemplate"
                   icon:text="\uf030"
-                  name:text="" />
+                  name:text=""
+                  name:color="" />
                 <ListItem template="recordPropertiesTemplate"
                   icon:text="\uf0b1"
-                  name:text="" />
+                  name:text=""
+                  name:color="" />
               </ListSection>
             </ListView>
           </View>

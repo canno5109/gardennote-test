@@ -9,12 +9,12 @@
         </View>
       </View>
       <View class="container">
-        <View class="inputContainer">
+        <ScrollView class="inputContainer">
           <View class="inputFieldContainer">
             <TextField id="nameField" class="inputField" hintText="作物名を入力" onClick="setKeyboardOwner" />
           </View>
           <Button id="saveBtn" onSingletap="save">作物を追加</Button>
-        </View>
+        </ScrollView>
       </View>
     </View>
   </Window>

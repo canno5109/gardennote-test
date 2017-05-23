@@ -59,5 +59,20 @@
   borderColor: "#008000",
   borderWidth: 3,
   borderRadius: 3
+}
 
+"#selectCropBtn": {
+  top: 50,
+  left: 20,
+  right: 20,
+  width: Ti.UI.FILL,
+  height: 50,
+  color: "#FFFFFF",
+  font: {
+    fontSize: 18
+  },
+  backgroundColor: "#6699FF",
+  borderColor: "#6699FF",
+  borderWidth: 3,
+  borderRadius: 3
 }

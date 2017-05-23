@@ -15,18 +15,19 @@
             <TextField id="nameField" class="inputField" hintText="作物名を入力" onClick="setKeyboardOwner" />
           </View>
           <Button id="updateBtn" onSingletap="update">作物を更新</Button>
+          <Button id="selectCropBtn" onSingletap="selectCrop">この作物を選択する</Button>
         </View>
-
-        <AlertDialog id="errorDialog" title="お知らせ" message="名前を入力してください">
-        </AlertDialog>
-
-        <OptionDialog id="confirmDialog" onClick="confirmDeleteCrop" title="作物名を削除しますか？">
-          <Options>
-            <Option>削除</Option>
-            <Option>キャンセル</Option>
-          </Options>
-        </OptionDialog>
       </View>
     </View>
+
+    <AlertDialog id="errorDialog" title="お知らせ" message="名前を入力してください">
+    </AlertDialog>
+
+    <OptionDialog id="confirmDialog" onClick="confirmDeleteCrop" title="作物名を削除しますか？" cancel="1">
+      <Options>
+        <Option>削除</Option>
+        <Option>キャンセル</Option>
+      </Options>
+    </OptionDialog>
   </Window>
 </Alloy>
