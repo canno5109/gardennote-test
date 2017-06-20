@@ -1,6 +1,6 @@
 <Alloy>
-  <Collection src="photoRecord" />
-  <Window id="cameraWin" onOpen="showCamera" onClose="resetMemory">
+  <Collection src="photoRecord" instance="true" />
+  <Window id="cameraWin" onOpen="showCamera" onClose="cleanup">
     <View id="editPicture">
       <ImageView id="photo" />
       <View class="edit">

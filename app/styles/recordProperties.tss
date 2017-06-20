@@ -21,7 +21,7 @@
 
 '.recordPropertiesTemplate': {
   width: Ti.UI.FILL,
-  height: 50,
+  height: 80,
   backgroundColor: '#FFFFFF',
   selectedBackgroundColor: '#FAFAFA',
   accessoryType: Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE
@@ -35,14 +35,15 @@
 }
 
 '.iconContainer': {
-  width: 50,
+  width: 80,
   height: Ti.UI.FILL,
+  horizontalWrap: false,
   backgroundColor: '#FFFFFF'
 }
 
 '.icon': {
   font: {
-    fontSize: 18,
+    fontSize: 28,
     fontFamily: 'FontAwesome'
   },
   color: '#009900',
@@ -59,7 +60,7 @@
 
 '.name': {
   font: {
-    fontSize: 18
+    fontSize: 28
   },
   color: '#464646',
   left: 10,

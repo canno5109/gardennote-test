@@ -1,5 +1,5 @@
 <Alloy>
-  <Collection src="work" />
+  <Collection src="work" instance="true" />
   <Window onClose="reset" onClick="hideKeyboard">
     <View class="body">
       <View class="navBar">

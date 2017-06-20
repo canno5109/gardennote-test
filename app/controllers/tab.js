@@ -66,6 +66,6 @@ setTimeout(function() {
   $.tabGroup.remove(cameraBtn);
 }, 5000);
 
-function resetMemory() {
+function cleanup() {
   $.destroy();
 };

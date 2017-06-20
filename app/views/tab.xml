@@ -1,5 +1,5 @@
 <Alloy>
-  <TabGroup id="tabGroup" onClose="resetMemory">
+  <TabGroup id="tabGroup" onClose="cleanup">
     <Require src="photoList" type="view" />
     <Tab>
       <Window>

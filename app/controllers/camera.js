@@ -29,10 +29,10 @@ function takePicture() {
 function closeCamera() {
   Ti.Media.hideCamera();
   $.cameraWin.close();
-  Alloy.createController('tab').getView().open({modal: true});
+  Alloy.createController('tab').getView().open();
 };
 
-function resetMemory() {
+function cleanup() {
   $.destroy();
 };
 

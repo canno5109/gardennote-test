@@ -9,7 +9,7 @@
             </View>
           </View>
           <View class="container">
-            <ListView id="recordPropertiesListView" onItemclick="onItemClick">
+            <ListView id="recordPropertiesListView" defaultItemTemplate="recordPropertiesTemplate" onItemclick="onItemClick">
               <Templates>
                 <ItemTemplate name="recordPropertiesTemplate" class="recordPropertiesTemplate">
                   <View class="itemContainer">
@@ -25,12 +25,12 @@
               <ListSection id="photoListSection">
                 <ListItem template="recordPropertiesTemplate"
                   icon:text="\uf030"
-                  name:text=""
-                  name:color="" />
+                  name:text="Hello World!"
+                  name:color="#464646" />
                 <ListItem template="recordPropertiesTemplate"
                   icon:text="\uf0b1"
-                  name:text=""
-                  name:color="" />
+                  name:text="Hello"
+                  name:color="#464646" />
               </ListSection>
             </ListView>
           </View>

@@ -1,5 +1,5 @@
 <Alloy>
-  <Collection src="crop" />
+  <Collection src="crop" instance="true" />
   <Window onOpen="Alloy.Globals.refreshCrop" onClose="reset">
     <View class="body">
       <View class="navBar">

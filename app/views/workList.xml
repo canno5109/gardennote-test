@@ -1,5 +1,5 @@
 <Alloy>
-  <Collection src="work" />
+  <Collection src="work" instance="true" />
   <Window onOpen="Alloy.Globals.refreshWork" onClose="reset">
     <View class="body">
       <View class="navBar">
