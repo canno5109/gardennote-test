@@ -1,7 +1,7 @@
 <Alloy>
   <Tab title="記録設定" icon="/icons/cogs.png">
     <NavigationWindow id="recordPropertiesNav">
-      <Window onOpen="updateRecordProperties">
+      <Window onOpen="updateRecordProperties" onFocus="updateRecordProperties">
         <View class="body">
           <View class="navBar">
             <View class="navItems">
@@ -21,15 +21,47 @@
                     </View>
                   </View>
                 </ItemTemplate>
+                <ItemTemplate name="header" class="headerTemplate">
+                  <View class="headerContainer">
+                    <Label bindId="header" class="headerTitle" />
+                  </View>
+                </ItemTemplate>
               </Templates>
               <ListSection id="photoListSection">
-                <ListItem template="recordPropertiesTemplate"
-                  icon:text="\uf030"
-                  name:text="Hello World!"
+                <ListItem template="header" header:text="テーマ" />
+                <ListItem template="recordPropertiesTemplate" itemId="theme"
+                  height="80"
+                  icon:text="\uf005"
+                  icon:color="#ffd700"
+                  name:text=""
                   name:color="#464646" />
-                <ListItem template="recordPropertiesTemplate"
+
+                <ListItem template="header" header:text="農作物" />
+                <ListItem template="recordPropertiesTemplate" itemId="crop"
+                  icon:text="\uf06c"
+                  icon:color="#009900"
+                  name:text=""
+                  name:color="#464646" />
+
+                <ListItem template="header" header:text="農作業" />
+                <ListItem template="recordPropertiesTemplate" itemId="work"
                   icon:text="\uf0b1"
-                  name:text="Hello"
+                  icon:color="#A52A2A"
+                  name:text=""
+                  name:color="#464646" />
+
+                <ListItem template="header" header:text="みどりボックス" />
+                <ListItem template="recordPropertiesTemplate" itemId="midori"
+                  icon:text="\uf187"
+                  icon:color="#BFBFBF"
+                  name:text="農地カメラ"
+                  name:color="#464646" />
+
+                <ListItem template="header" header:text="お問い合わせ" />
+                <ListItem template="recordPropertiesTemplate" itemId="mail"
+                  icon:text="\uf0e0"
+                  icon:color="#6699ff"
+                  name:text="メールで連絡"
                   name:color="#464646" />
               </ListSection>
             </ListView>

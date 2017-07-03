@@ -4,7 +4,7 @@ function closeWin() {
   $.workList.close();
 };
 
-function reset() {
+function cleanup() {
   $.destroy();
 };
 
@@ -32,9 +32,16 @@ function filterWork(collection) {
   return collection.models;
 };
 
-Alloy.Globals.refreshWork = function() {
-  Alloy.Collections.work.fetch({ query: { statement: 'SELECT * FROM work WHERE cropId = ?', params: [Ti.App.Properties.getObject('recordProperties').cropId] } });
-  updateWork();
+function refreshWork() {
+  Alloy.Collections.work.fetch({
+    query: {
+      statement: 'SELECT * FROM work WHERE cropId = ?',
+      params: [Ti.App.Properties.getObject('recordProperties').cropId]
+    },
+    success: function () {
+      updateWork();
+    }
+  });
 };
 
 Alloy.Collections.work.fetch({ query: { statement: 'SELECT * FROM work WHERE cropId = ?', params: [Ti.App.Properties.getObject('recordProperties').cropId] } });

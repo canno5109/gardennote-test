@@ -10,12 +10,10 @@ if (Ti.App.Properties.getObject('recordProperties').workId == workId) {
 }
 
 function closeWin() {
-  Alloy.Globals.updateRecordProperties();
-  Alloy.Globals.refreshWork();
   $.editWork.close();
 };
 
-function reset() {
+function cleanup() {
   $.destroy();
 };
 
@@ -31,6 +29,7 @@ function update() {
         var work = Alloy.Collections.work.first();
         work.set({name: name});
         work.save();
+        Alloy.Globals.workUpdate = true;
         closeWin();
       }
     });
@@ -79,14 +78,13 @@ function selectWork() {
         name: Ti.App.Properties.getObject('recordProperties').name,
         work: workModel.get('name'),
         cropId: Ti.App.Properties.getObject('recordProperties').cropId,
-        workId: workModel.get('id')
+        workId: workModel.get('id'),
+        theme: Ti.App.Properties.getObject('recordProperties').theme
       });
       Ti.API.debug(JSON.stringify(Ti.App.Properties.getObject('recordProperties')));
       $.selectWorkBtn.setTouchEnabled(false);
       $.selectWorkBtn.setTitle('選択済み');
       $.selectWorkBtn.setOpacity(0.3);
-      Alloy.Globals.updateRecordProperties();
-      Alloy.Globals.refreshWork();
     }
   });
 };

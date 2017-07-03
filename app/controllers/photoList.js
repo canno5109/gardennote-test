@@ -39,7 +39,8 @@ function addPhoto() {
         note: null
       }).save();
 
-      updateUI();
+      Alloy.Globals.photoUpdate = true;
+      Alloy.Globals.updateUI();
     },
     error: function(e) {},
     mediaTypes: Ti.Media.MEDIA_TYPE_PHOTO,
@@ -59,24 +60,22 @@ function hidePhotoDetailView() {
   $.photoDetailContainer.animate(closeAnimation, function() {
     $.photoDetailContainer.setVisible(false);
   });
-
-  updateUI();
 };
 
 function deleteCrop() {
   $.confirmDialog.show();
 };
 
-function confirmDeleteCrop(e) {
+function confirmPhotoAction(e) {
   switch (e.index) {
     case 0:
       var item = $.photoListSection.getItemAt($.photoDetailScrollableView.getCurrentPage());
       var name = item.name.text;
-      var work = item.workValue;
-      var date = item.dateValue;
+      var work = item.properties.workValue;
+      var date = item.properties.dateValue;
       var note= item.note.text;
 
-      $.nameField.setValue(name);
+      $.cropField.setValue(name);
       $.workField.setValue(work);
       $.noteArea.setValue(note);
 
@@ -89,13 +88,13 @@ function confirmDeleteCrop(e) {
       break;
     case 1:
       var photoId = $.photoDetailScrollableView.getViews()[$.photoDetailScrollableView.getCurrentPage()].photoId;
-      $.photoRecord.fetch({
+      Alloy.Collections.photoRecord.fetch({
         query: {
           statement: 'SELECT * FROM photoRecord WHERE id = ?',
           params: [photoId]
         },
         success: function() {
-          var photoRecordModel = $.photoRecord.first();
+          var photoRecordModel = Alloy.Collections.photoRecord.first();
           photoRecordModel.destroy();
           $.photoListWin.setFullscreen(false);
           Alloy.Globals.tabGroup.add(Alloy.Globals.customCameraContainer);
@@ -108,7 +107,8 @@ function confirmDeleteCrop(e) {
             $.photoDetailContainer.setVisible(false);
           });
 
-          updateUI();
+          Alloy.Globals.photoUpdate = true;
+          Alloy.Globals.updateUI();
         }
       });
       break;
@@ -131,21 +131,22 @@ function hideEditPhotoView() {
 function updatePhotoData() {
   var photoId = $.photoDetailScrollableView.getViews()[$.photoDetailScrollableView.getCurrentPage()].photoId;
   var currentPage = $.photoDetailScrollableView.getCurrentPage();
-  $.photoRecord.fetch({
+  Alloy.Collections.photoRecord.fetch({
     query: {
       statement: 'SELECT * FROM photoRecord WHERE id = ?',
       params: [photoId]
     },
     success: function() {
-      var photoRecordModel = $.photoRecord.first();
+      var photoRecordModel = Alloy.Collections.photoRecord.first();
       photoRecordModel.set({
-        name: $.nameField.value,
+        name: $.cropField.value,
         work: $.workField.value,
         note: $.noteArea.value
       });
       photoRecordModel.save(null, {
         success: function() {
-          updateUI();
+          Alloy.Globals.photoUpdate = true;
+          Alloy.Globals.updateUI();
           $.photoDetailScrollableView.setCurrentPage(currentPage);
           hideEditPhotoView();
         }
@@ -155,56 +156,21 @@ function updatePhotoData() {
 };
 
 function openPicker() {
-  $.picker.columns = [];
-  var column = Ti.UI.createPickerColumn();
+  var pickerView;
   if (this.name === 'crop') {
-    $.cropCollection.fetch({
-      success: function() {
-        $.cropCollection.each(function(crop) {
-          Ti.API.debug(crop.get('name'));
-
-          var row = Ti.UI.createPickerRow();
-          var label = Ti.UI.createLabel({
-            color: '#464646',
-            font: {fontSize: 20, fontFamily: 'uzura_font'},
-            text: crop.get('name'),
-            width: Ti.UI.SIZE,
-            height: Ti.UI.SIZE
-          });
-
-          row.add(label)
-          column.addRow(row);
-        });
-      }
-    });
+    pickerView = $.cropPickerView;
   } else {
-    $.workCollection.fetch({
-      success: function() {
-        $.workCollection.each(function(work) {
-          var row = Ti.UI.createPickerRow();
-          var label = Ti.UI.createLabel({
-            color: '#464646',
-            font: {fontSize: 20, fontFamily: 'uzura_font'},
-            text: work.get('name'),
-            width: Ti.UI.SIZE,
-            height: Ti.UI.SIZE
-          });
-          row.add(label);
-          column.addRow(row);
-        });
-      }
-    });
+    pickerView = $.workPickerView;
   }
-  $.picker.columns.push(column);
 
-  $.pickerView.setVisible(true);
+  pickerView.setVisible(true);
 
   var animate = Ti.UI.createAnimation({
     bottom: 0,
     duration: 300
   });
 
-  $.pickerView.animate(animate);
+  pickerView.animate(animate);
 };
 
 function resetValue() {
@@ -212,25 +178,49 @@ function resetValue() {
 };
 
 function hidePicker() {
+  var pickerView;
+  if (this.name === 'crop') {
+    pickerView = $.cropPickerView;
+  } else {
+    pickerView = $.workPickerView;
+  }
   var animate = Ti.UI.createAnimation({
     bottom: '-100%',
     duration: 300
   });
 
-  $.pickerView.animate(animate, function() {
-    $.pickerView.setVisible(false);
+  pickerView.animate(animate, function() {
+    pickerView.setVisible(false);
   });
 };
 
-var value;
-function getPickerValue(e) {
-  value = $.picker.columns[e.columnIndex].rows[e.rowIndex].title;
-  Ti.API.debug(e.row.title);
-  Ti.API.debug(value);
+var cropPickerValue, workPickerValue;
+function getCropPickerValue(e) {
+  cropPickerValue = $.cropPickerColumn.rows[e.rowIndex].title;
+};
+
+function getWorkPickerValue(e) {
+  workPickerValue = $.workPickerColumn.rows[e.rowIndex].title;
 };
 
 function doneClick() {
-  hidePicker();
+  var pickerView;
+  if (this.name === 'crop') {
+    $.cropField.setValue(cropPickerValue);
+    pickerView = $.cropPickerView;
+  } else {
+    $.workField.setValue(workPickerValue);
+    pickerView = $.workPickerView;
+  }
+
+  var animate = Ti.UI.createAnimation({
+    bottom: '-100%',
+    duration: 300
+  });
+
+  pickerView.animate(animate, function() {
+    pickerView.setVisible(false);
+  });
 };
 
 // 表示されたキーボードのオーナーを格納
@@ -241,7 +231,6 @@ function setKeyboardOwner(e) {
 
 // キーボードを閉じる
 function hideKeyboard() {
-  Ti.API.debug(typeof(currentKeyboardOwner));
   if (typeof(currentKeyboardOwner) !== 'undefined') {
     currentKeyboardOwner.blur();
   }
@@ -297,13 +286,59 @@ function filterPhotoDetail(collection) {
   return collection.models;
 };
 
-function updateUI() {
-  $.photoRecord.fetch({
-    success: function() {
-      updatePhotoList();
-      updatePhotoDetail();
-    }
-  });
+Alloy.Globals.updateUI = function () {
+  if (Alloy.Globals.cropUpdate) {
+    Ti.API.debug('作物更新');
+    Alloy.Collections.crop.fetch({
+      success: function() {
+        updateCropValue();
+        Alloy.Globals.cropUpdate = false;
+      }
+    });
+  }
+
+  if (Alloy.Globals.workUpdate) {
+    Ti.API.debug('農作業更新');
+    Alloy.Collections.work.fetch({
+      success: function() {
+        updateWorkValue();
+        Alloy.Globals.workUpdate = false;
+      }
+    });
+  }
+
+  if (Alloy.Globals.photoUpdate) {
+    Ti.API.debug('写真更新');
+    Alloy.Collections.photoRecord.fetch({
+      success: function() {
+        updatePhotoList();
+        updatePhotoDetail();
+        Alloy.Globals.photoUpdate = false;
+      }
+    });
+  }
 };
 
-$.photoRecord.fetch();
+Alloy.Collections.photoRecord.fetch();
+
+
+function transformCropValue(model) {
+  var transform = model.toJSON();
+  return transform;
+};
+
+function filterCropValue(collection) {
+  return collection.models;
+};
+
+function transformWorkValue(model) {
+  var transform = model.toJSON();
+  return transform;
+};
+
+function filterWorkValue(collection) {
+  return collection.models;
+};
+
+Alloy.Collections.crop.fetch();
+Alloy.Collections.work.fetch();

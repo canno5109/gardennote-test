@@ -1,0 +1,45 @@
+'.imageContainer': {
+  width: Ti.UI.FILL,
+  height: Ti.UI.FILL,
+  zoomScale: 0.3,
+  minZoomScale: 0.3,
+  maxZoomScale: 1,
+  backgroundColor: '#000000'
+}
+
+'.image': {
+  width: Ti.UI.SIZE,
+  height: Ti.UI.SIZE,
+}
+
+'.savePhotoBtn': {
+  bottom: 10,
+  right: 10,
+  width: 70,
+  height: 70,
+  backgroundColor: '#808080',
+  borderColor: '#808080',
+  borderRadius: 35,
+  font: {
+    fontSize: 32,
+    fontFamily: 'FontAwesome'
+  },
+  color: '#FFFFFF',
+  title: '\uf019',
+  zIndex: 1
+}
+
+'#loadImageIndicator': {
+  indicatorColor: '#009900',
+  width: '50%',
+  height: '20%',
+  backgroundColor: '#F5F5F5',
+  color: '#009900',
+  font: {
+    fontSize: 18
+  },
+  borderColor: '#009900',
+  borderWidth: 2,
+  borderRadius: 5,
+  zIndex: 1
+}

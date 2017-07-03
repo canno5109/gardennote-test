@@ -334,7 +334,7 @@
   borderRadius: 3
 }
 
-'#pickerView': {
+'.pickerView': {
   bottom: '-100%',
   width: '100%',
   height: Ti.UI.SIZE,
@@ -344,7 +344,7 @@
   zIndex: 1
 }
 
-'#toolbar': {
+'.toolbar': {
   width: Ti.UI.FILL,
   height: 45,
   bubbleParent: false,
@@ -352,7 +352,7 @@
   barColor: '#009900'
 }
 
-'#cancel': {
+'.cancel': {
   title: 'キャンセル',
   left: 5,
   width: Ti.UI.SIZE,
@@ -361,7 +361,7 @@
   backgroundColor: 'transparent'
 }
 
-'#done': {
+'.done': {
   title: '完了',
   right: 5,
   width: Ti.UI.SIZE,
@@ -371,7 +371,7 @@
   backgroundColor: 'transparent'
 }
 
-'#picker': {
+'.picker': {
   font: {
     fontSize: 18
   },

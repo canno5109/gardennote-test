@@ -2,8 +2,6 @@ var args = $.args;
 var currentKeyboardOwner = undefined;
 
 function closeWin() {
-  Alloy.Globals.updateRecordProperties();
-  Alloy.Globals.refreshWork();
   $.addWork.close();
 };
 
@@ -19,6 +17,7 @@ function save() {
       cropId: Ti.App.Properties.getObject('recordProperties').cropId
     }).save(null, {
       success: function() {
+        Alloy.Globals.workUpdate = true;
         closeWin();
       }
     });

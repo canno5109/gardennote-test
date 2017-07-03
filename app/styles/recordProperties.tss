@@ -19,23 +19,43 @@
   listSeparatorInsets: {right: 0, left: 0}
 }
 
+'.headerTemplate': {
+  width: Ti.UI.FILL,
+  height: 30,
+  selectionStyle: Titanium.UI.iOS.ListViewCellSelectionStyle.NONE
+}
+
 '.recordPropertiesTemplate': {
   width: Ti.UI.FILL,
-  height: 80,
+  height: 50,
   backgroundColor: '#FFFFFF',
-  selectedBackgroundColor: '#FAFAFA',
+  selectedBackgroundColor: '#E6E6E6',
   accessoryType: Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE
+}
+
+'.headerContainer': {
+  height: Ti.UI.FILL,
+  backgroundColor: '#FAFAFA'
+}
+
+'.headerTitle': {
+  left: 10,
+  color: '#464646',
+  font: {
+    fontSize: 16
+  }
 }
 
 '.itemContainer': {
   layout: 'horizontal',
+  horizontalWrap: false,
   width: Ti.UI.FILL,
   height: Ti.UI.FILL,
   backgroundColor: '#FFFFFF'
 }
 
 '.iconContainer': {
-  width: 80,
+  width: 50,
   height: Ti.UI.FILL,
   horizontalWrap: false,
   backgroundColor: '#FFFFFF'
@@ -43,7 +63,7 @@
 
 '.icon': {
   font: {
-    fontSize: 28,
+    fontSize: 20,
     fontFamily: 'FontAwesome'
   },
   color: '#009900',
@@ -60,7 +80,7 @@
 
 '.name': {
   font: {
-    fontSize: 28
+    fontSize: 20
   },
   color: '#464646',
   left: 10,
@@ -68,3 +88,4 @@
   width: Ti.UI.FILL,
   height: Ti.UI.SIZE
 }
+

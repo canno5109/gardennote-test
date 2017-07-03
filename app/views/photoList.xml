@@ -1,8 +1,4 @@
 <Alloy>
-  <Collection id="photoRecord" src="photoRecord" instance="true" />
-  <Collection id="cropCollection" src="crop" instance="true" />
-  <Collection id="workCollection" src="work" instance="true" />
-
   <Tab title="写真一覧" icon="/icons/images.png">
     <NavigationWindow id="photoListNav">
       <Window id="photoListWin" onClose="cleanup">
@@ -32,7 +28,7 @@
                 </ItemTemplate>
               </Templates>
               <ListSection id="photoListSection"
-                dataCollection="$.photoRecord"
+                dataCollection="photoRecord"
                 dataTransform="transformPhotoList"
                 dataFilter="filterPhotoList"
                 dataFunction="updatePhotoList" >
@@ -55,7 +51,7 @@
             <Button class="closeBtn" onSingletap="hidePhotoDetailView" />
           </View>
           <ScrollableView id="photoDetailScrollableView"
-            dataCollection="$.photoRecord"
+            dataCollection="photoRecord"
             dataTransform="transformPhotoDetail"
             dataFilter="filterPhotoDetail"
             dataFunction="updatePhotoDetail" >
@@ -80,19 +76,42 @@
                 </View>
               </View>
               <View class="container">
-                <View id="pickerView" visible="fasle">
-                  <View id="toolbar">
-                    <Button id="cancel" onClick="hidePicker" />
-                    <Button id="done" onClick="doneClick" />
+                <View id="cropPickerView" class="pickerView" visible="fasle">
+                  <View class="toolbar">
+                    <Button class="cancel" name="crop" onClick="hidePicker" />
+                    <Button class="done" name="crop" onClick="doneClick" />
                   </View>
-                  <Picker id="picker" onChange="getPickerValue">
+                  <Picker id="cropPicker" class="picker" onChange="getCropPickerValue">
+                    <PickerColumn id="cropPickerColumn"
+                      dataCollection="crop"
+                      dataTransform="transformCropValue"
+                      dataFilter="filterCropValue"
+                      dataFunction="updateCropValue" >
+                      <PickerRow title="{name}" />
+                    </PickerColumn>
+                  </Picker>
+                </View>
+
+                <View id="workPickerView" class="pickerView" visible="fasle">
+                  <View class="toolbar">
+                    <Button class="cancel" name="work" onClick="hidePicker" />
+                    <Button class="done" name="work" onClick="doneClick" />
+                  </View>
+                  <Picker id="workPicker" class="picker" onChange="getWorkPickerValue">
+                    <PickerColumn id="workPickerColumn"
+                      dataCollection="work"
+                      dataTransform="transformWorkValue"
+                      dataFilter="filterWorkValue"
+                      dataFunction="updateWorkValue" >
+                      <PickerRow title="{name}" />
+                    </PickerColumn>
                   </Picker>
                 </View>
 
                 <ScrollView class="editContainerScroll">
                   <View class="field">
                     <View class="input">
-                      <TextField id="nameField" class="inputField" hintText="作物名を選択" onClick="setKeyboardOwner" />
+                      <TextField id="cropField" class="inputField" hintText="作物名を選択" onClick="setKeyboardOwner" />
                       <Button name="crop" class="dropBtn" onSingletap="openPicker"  />
                     </View>
                     <Button name="crop" class="resetBtn" onSingletap="resetValue" />
@@ -116,7 +135,7 @@
           </View>
         </View>
 
-        <OptionDialog id="confirmDialog" onClick="confirmDeleteCrop" cancel="2" tintColor="#009900">
+        <OptionDialog id="confirmDialog" onClick="confirmPhotoAction" cancel="2" tintColor="#009900">
           <Options>
             <Option>写真情報を編集</Option>
             <Option>写真を削除</Option>

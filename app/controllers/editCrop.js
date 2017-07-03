@@ -10,12 +10,10 @@ if (Ti.App.Properties.getObject('recordProperties').cropId == cropId) {
 }
 
 function closeWin() {
-  Alloy.Globals.updateRecordProperties();
-  Alloy.Globals.refreshCrop();
   $.editCrop.close();
 };
 
-function reset() {
+function cleanup() {
   $.destroy();
 };
 
@@ -32,6 +30,7 @@ function update() {
         crop.set({name: name});
         crop.save();
         closeWin();
+        Alloy.Globals.cropUpdate = true;
       }
     });
   } else {
@@ -80,13 +79,12 @@ function selectCrop() {
         name: cropModel.get('name'),
         work: null,
         cropId: cropModel.get('id'),
-        workId: Ti.App.Properties.getObject('recordProperties').workId
+        workId: Ti.App.Properties.getObject('recordProperties').workId,
+        theme: Ti.App.Properties.getObject('recordProperties').theme
       });
       $.selectCropBtn.setTouchEnabled(false);
       $.selectCropBtn.setTitle('選択済み');
       $.selectCropBtn.setOpacity(0.3);
-      Alloy.Globals.updateRecordProperties();
-      Alloy.Globals.refreshCrop();
     }
   });
 };

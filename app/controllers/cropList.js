@@ -4,7 +4,7 @@ function closeWin() {
   $.cropList.close();
 };
 
-function reset() {
+function cleanup() {
   $.destroy();
 };
 
@@ -32,9 +32,12 @@ function filterCrop(collection) {
   return collection.models;
 };
 
-Alloy.Globals.refreshCrop = function() {
-  Alloy.Collections.crop.fetch();
-  updateCrop();
+function refreshCrop() {
+  Alloy.Collections.crop.fetch({
+    success: function() {
+      updateCrop();
+    }
+  });
 };
 
 Alloy.Collections.crop.fetch();

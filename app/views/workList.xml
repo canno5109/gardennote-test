@@ -1,6 +1,5 @@
 <Alloy>
-  <Collection src="work" instance="true" />
-  <Window onOpen="Alloy.Globals.refreshWork" onClose="reset">
+  <Window onFocus="refreshWork" onClose="cleanup">
     <View class="body">
       <View class="navBar">
         <View class="navItems">

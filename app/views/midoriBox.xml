@@ -1,0 +1,21 @@
+<Alloy>
+  <Window onOpen="createLoginSession">
+    <View class="body">
+      <View class="navBar">
+        <View class="navItems">
+          <Button class="backBtn" onSingletap="closeWin" />
+          <Label class="navTitle">みどりボックス</Label>
+        </View>
+      </View>
+      <View class="container">
+        <ScrollView class="imageContainer">
+          <ImageView id="image" />
+        </ScrollView>
+
+        <Button class="savePhotoBtn" onSingletap="savePhoto" />
+
+        <ActivityIndicator id="loadImageIndicator" message="Loading..."/>
+      </View>
+    </View>
+  </Window>
+</Alloy>

@@ -2,8 +2,6 @@ var args = $.args;
 var currentKeyboardOwner = undefined;
 
 function closeWin() {
-  Alloy.Globals.updateRecordProperties();
-  Alloy.Globals.refreshCrop();
   $.addCrop.close();
 };
 
@@ -18,6 +16,7 @@ function save() {
       name: name
     }).save(null, {
       success: function() {
+        Alloy.Globals.cropUpdate = true;
         closeWin();
       }
     });

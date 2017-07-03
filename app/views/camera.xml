@@ -1,5 +1,5 @@
 <Alloy>
-  <Collection src="photoRecord" instance="true" />
+  <Collection src="photoRecord" />
   <Window id="cameraWin" onOpen="showCamera" onClose="cleanup">
     <View id="editPicture">
       <ImageView id="photo" />

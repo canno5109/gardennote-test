@@ -10,7 +10,8 @@ if (!Ti.App.Properties.getBool('initialActivation')) {
     name: 'りんご',
     work: '摘果',
     cropId: 1,
-    workId: 1
+    workId: 1,
+    theme: ''
   });
   Ti.App.Properties.setBool('initialActivation', true);
 }

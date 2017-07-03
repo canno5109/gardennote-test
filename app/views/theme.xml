@@ -1,0 +1,21 @@
+<Alloy>
+  <Window onOpen="setAreaValue" onClose="cleanup">
+    <View class="body">
+      <View class="navBar">
+        <View class="navItems">
+          <Button class="backBtn" onSingletap="closeWin" />
+          <Label class="navTitle">テーマ</Label>
+        </View>
+      </View>
+      <View class="container">
+        <View class="center">
+          <View class="areaContainer">
+            <TextArea id="themeArea" class="inputArea" onClick="setKeyboardOwner" />
+          </View>
+
+          <Button class="updateThemeBtn" onSingletap="updateTheme">テーマを更新</Button>
+        </View>
+      </View>
+    </View>
+  </Window>
+</Alloy>

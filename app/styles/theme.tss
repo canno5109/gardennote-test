@@ -1,0 +1,48 @@
+'.center': {
+  layout: 'vertical',
+  width: Ti.UI.FILL,
+  height: Ti.UI.SIZE
+}
+
+'.areaContainer': {
+  left: 20,
+  right: 20,
+  width: Ti.UI.FILL,
+  height: 150,
+  backgroundColor: '#FFFFFF',
+  borderColor: '#E6E6E6',
+  borderWidth: 1,
+  borderRadius: 5
+}
+
+'.inputArea': {
+  top: 5,
+  bottom: 5,
+  left: 10,
+  right: 10,
+  width: Ti.UI.FILL,
+  height: Ti.UI.FILL,
+  color: '#464646',
+  font: {
+    fontSize: 18
+  },
+  autocorrect: false,
+  backgroundColor: '#FFFFFF',
+  returnKeyType: Ti.UI.RETURNKEY_CONTINUE
+}
+
+'.updateThemeBtn': {
+  top: 50,
+  left: 20,
+  right: 20,
+  width: Ti.UI.FILL,
+  height: 50,
+  color: '#FFFFFF',
+  font: {
+    fontSize: 18
+  },
+  backgroundColor: '#009900',
+  borderColor: '#009900',
+  borderWidth: 3,
+  borderRadius: 3
+}

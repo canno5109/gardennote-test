@@ -1,2 +1,5 @@
 <Alloy>
+  <Collection src="photoRecord" />
+  <Collection src="crop" />
+  <Collection src="work" />
 </Alloy>
