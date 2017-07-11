@@ -36,20 +36,6 @@
                   name:text=""
                   name:color="#464646" />
 
-                <ListItem template="header" header:text="農作物" />
-                <ListItem template="recordPropertiesTemplate" itemId="crop"
-                  icon:text="\uf06c"
-                  icon:color="#009900"
-                  name:text=""
-                  name:color="#464646" />
-
-                <ListItem template="header" header:text="農作業" />
-                <ListItem template="recordPropertiesTemplate" itemId="work"
-                  icon:text="\uf0b1"
-                  icon:color="#A52A2A"
-                  name:text=""
-                  name:color="#464646" />
-
                 <ListItem template="header" header:text="みどりボックス" />
                 <ListItem template="recordPropertiesTemplate" itemId="midori"
                   icon:text="\uf187"

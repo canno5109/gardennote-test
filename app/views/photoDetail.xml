@@ -1,0 +1,22 @@
+<Alloy>
+  <Window id="photoDetailWin" onClose="cleanup">
+    <View class="body">
+      <View class="navBar">
+        <View class="navItems">
+          <Button class="backBtn" onSingletap="closeWin" />
+          <Label class="navTitle">撮影記録</Label>
+        </View>
+      </View>
+      <View class="container">
+      </View>
+    </View>
+
+    <OptionDialog id="optionDialog" onClick="clickOptionDialog">
+      <Options>
+        <Option>撮影記録を編集</Option>
+        <Option>撮影記録を削除</Option>
+        <Option>キャンセル</Option>
+      </Options>
+    </OptionDialog>
+  </Window>
+</Alloy>

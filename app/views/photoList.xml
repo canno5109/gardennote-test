@@ -1,7 +1,7 @@
 <Alloy>
   <Tab title="写真一覧" icon="/icons/images.png">
     <NavigationWindow id="photoListNav">
-      <Window id="photoListWin" onClose="cleanup" onClick="hideKeyboard">
+      <Window id="photoListWin" onClose="cleanup" onClick="hideKeyboard" onFocus="showRecordingFastestMessage">
         <View class="body">
           <View class="navBar">
             <View class="navItems">
@@ -10,7 +10,7 @@
             </View>
           </View>
           <View class="container">
-            <ListView id="photoListView" onItemclick="showPhotoDetail">
+            <ListView id="photoListView" onItemclick="openPhotoDetail">
               <Templates>
                 <ItemTemplate name="photoListTemplate" class="photoTemplate">
                   <View class="listItemContainer">
@@ -18,11 +18,11 @@
                       <ImageView bindId="photo" class="photo" />
                     </View>
                     <View class="textContainer">
-                      <Label bindId="name" class="name" />
+                      <Label bindId="crop_name" class="crop_name" />
                       <Label bindId="work" class="work" />
                       <Label bindId="date" class="date" />
-                      <Label class="noteTitle">メモ:</Label>
-                      <Label bindId="note" class="note" />
+                      <Label class="noteTitle">考察:</Label>
+                      <Label bindId="evidence" class="evidence" />
                     </View>
                   </View>
                 </ItemTemplate>
@@ -34,114 +34,21 @@
                 dataFunction="updatePhotoList" >
                 <ListItem template="photoListTemplate" cropId="{id}"
                   photo:image="{photo}"
-                  name:text="{name}"
+                  crop_name:text="{crop_name}"
                   work:text="{work}"
                   date:text="{date}"
-                  note:text="{note}"
+                  evidence:text="{evidence}"
                   workValue="{workValue}"
                   dateValue="{dateValue}" >
                 </ListItem>
               </ListSection>
             </ListView>
-          </View>
-        </View>
 
-        <View id="photoDetailContainer">
-          <View id="photoDetailTopOptionBtnContainer">
-            <Button class="closeBtn" onSingletap="hidePhotoDetailView" />
-          </View>
-          <ScrollableView id="photoDetailScrollableView"
-            dataCollection="photoRecord"
-            dataTransform="transformPhotoDetail"
-            dataFilter="filterPhotoDetail"
-            dataFunction="updatePhotoDetail" >
-            <View photoId="{photoId}">
-              <Label class="photoDetailDate" text="{date}" />
-              <Label class="photoDetailName" text="{name}" />
-              <ScrollView class="photoDetailScroll" minZoomScale="{zoomScale}" zoomScale="{zoomScale}">
-                <ImageView class="photoDetailImage" image="{photo}" />
-              </ScrollView>
-            </View>
-          </ScrollableView>
-          <View id="photoDetailBottomOptionBtnContainer">
-            <Button class="optionBtn" onSingletap="deleteCrop" />
-          </View>
-
-          <View id="editPhotoContainer" onClick="hideKeyboard">
-            <View class="body">
-              <View class="navBar">
-                <View class="navItems">
-                  <Button class="backBtn" onSingletap="hideEditPhotoView" />
-                  <Label class="navTitle">写真情報編集</Label>
-                </View>
-              </View>
-              <View class="container">
-                <View id="cropPickerView" class="pickerView" visible="fasle">
-                  <View class="toolbar">
-                    <Button class="cancel" name="crop" onClick="hidePicker" />
-                    <Button class="done" name="crop" onClick="doneClick" />
-                  </View>
-                  <Picker id="cropPicker" class="picker" onChange="getCropPickerValue">
-                    <PickerColumn id="cropPickerColumn"
-                      dataCollection="crop"
-                      dataTransform="transformCropValue"
-                      dataFilter="filterCropValue"
-                      dataFunction="updateCropValue" >
-                      <PickerRow title="{name}" />
-                    </PickerColumn>
-                  </Picker>
-                </View>
-
-                <View id="workPickerView" class="pickerView" visible="fasle">
-                  <View class="toolbar">
-                    <Button class="cancel" name="work" onClick="hidePicker" />
-                    <Button class="done" name="work" onClick="doneClick" />
-                  </View>
-                  <Picker id="workPicker" class="picker" onChange="getWorkPickerValue">
-                    <PickerColumn id="workPickerColumn"
-                      dataCollection="work"
-                      dataTransform="transformWorkValue"
-                      dataFilter="filterWorkValue"
-                      dataFunction="updateWorkValue" >
-                      <PickerRow title="{name}" />
-                    </PickerColumn>
-                  </Picker>
-                </View>
-
-                <ScrollView class="editContainerScroll">
-                  <View class="field">
-                    <View class="input">
-                      <TextField id="cropField" class="inputField" hintText="作物名を選択" onClick="setKeyboardOwner" />
-                      <Button name="crop" class="dropBtn" onSingletap="openPicker"  />
-                    </View>
-                    <Button name="crop" class="resetBtn" onSingletap="resetValue" />
-                  </View>
-
-                  <View class="field">
-                    <View class="input">
-                      <TextField id="workField" class="inputField" hintText="農作業を選択" onClick="setKeyboardOwner" />
-                      <Button name="work" class="dropBtn" onSingletap="openPicker"  />
-                    </View>
-                    <Button name="work" class="resetBtn" onSingletap="resetValue" />
-                  </View>
-
-                  <View class="inputAreaContainer">
-                    <TextArea id="noteArea" class="inputArea" onClick="setKeyboardOwner" />
-                  </View>
-                  <Button id="saveBtn" onSingletap="updatePhotoData">写真情報を更新</Button>
-                </ScrollView>
-              </View>
+            <View id="recordingFastestMessageView">
+              <Label id="recordingFastestMessage">投稿記録がありません。カメラアイコンをタップして農作業の様子を撮影したり、右上のボタンをタップすることで端末の写真を追加できます。</Label>
             </View>
           </View>
         </View>
-
-        <OptionDialog id="confirmDialog" onClick="confirmPhotoAction" cancel="2" tintColor="#009900">
-          <Options>
-            <Option>写真情報を編集</Option>
-            <Option>写真を削除</Option>
-            <Option>キャンセル</Option>
-          </Options>
-        </OptionDialog>
       </Window>
     </NavigationWindow>
   </Tab>

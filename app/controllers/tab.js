@@ -18,13 +18,25 @@ var tabCover = Ti.UI.createView({
 
 var cameraBtnShadow = Ti.UI.createView({
   top: 5,
-  width: 101,
-  height: 101,
+  width: 76,
+  height: 76,
   bottom: -20,
   backgroundColor: 'transparent',
-  borderRadius: 50.5,
+  borderRadius: 38,
   viewShadowColor: '#b5b5b5',
   viewShadowOffset: { x: 0, y: 0 },
+  bubbleParent: false,
+  zIndex: 1
+});
+
+var cameraBtnContainer = Ti.UI.createView({
+  width: 75,
+  height: 75,
+  top: 5,
+  bottom: -20,
+  backgroundColor: '#009900',
+  borderColor: '#009900',
+  borderRadius: 37.5,
   bubbleParent: false,
   zIndex: 1
 });
@@ -32,20 +44,30 @@ var cameraBtnShadow = Ti.UI.createView({
 var cameraBtn = Ti.UI.createButton({
   title: '\uf030',
   color: '#FFFFFF',
-  width: 100,
-  height: 100,
-  top: 5,
-  bottom: -20,
-  backgroundColor: '#009900',
-  borderColor: '#009900',
-  borderRadius: 50,
+  width: 60,
+  height: 28,
+  top: 15,
   font: {
-    fontSize: 48,
+    fontSize: 28,
+    fontFamily: 'FontAwesome'
+  }
+});
+
+var cameraLabel = Ti.UI.createLabel({
+  text: 'カメラ',
+  color: '#FFFFFF',
+  width: 70,
+  height: 10,
+  top: 43,
+  font: {
+    fontSize: 11,
     fontFamily: 'FontAwesome'
   },
-  bubbleParent: false,
-  zIndex: 1
+  textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
 });
+
+cameraBtnContainer.add(cameraBtn);
+cameraBtnContainer.add(cameraLabel);
 
 cameraBtn.addEventListener('singletap', function() {
   if (!ENV_DEV) {
@@ -59,12 +81,8 @@ cameraBtn.addEventListener('singletap', function() {
 
 Alloy.Globals.customCameraContainer.add(tabCover);
 Alloy.Globals.customCameraContainer.add(cameraBtnShadow);
-Alloy.Globals.customCameraContainer.add(cameraBtn);
+Alloy.Globals.customCameraContainer.add(cameraBtnContainer);
 $.tabGroup.add(Alloy.Globals.customCameraContainer);
-
-setTimeout(function() {
-  $.tabGroup.remove(cameraBtn);
-}, 5000);
 
 function cleanup() {
   $.destroy();

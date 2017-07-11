@@ -1,0 +1,67 @@
+'#initialSettingWin': {
+  modal: true,
+  modalTransitionStyle: Ti.UI.iOS.MODAL_TRANSITION_STYLE_CROSS_DISSOLVE
+}
+
+'.verticalContainer': {
+  layout: 'vertical'
+}
+
+'#app': {
+  color: '#009900',
+  font: {fontSize: 24},
+  width: '85%',
+  height: 30,
+  top: 30,
+  bottom: 30,
+  textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
+}
+
+'#user_name': {
+  color: '#464646',
+  font: {fontSize: 16},
+  width: '85%',
+  height: 40,
+  top: 5,
+  bottom: 20,
+  borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
+  borderColor: '#e6e6e6',
+  borderRadius: 5,
+  autocorrect: false,
+  returnKeyType: Ti.UI.RETURNKEY_DONE,
+  clearButtonMode: Titanium.UI.INPUT_BUTTONMODE_ONFOCUS,
+  maxLength: 10
+}
+
+'.registerFormTitle': {
+  color: '#464646',
+  font: {fontSize: 14},
+  width: '85%',
+  height: Ti.UI.SIZE,
+  textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT
+}
+
+'#theme': {
+  color: '#464646',
+  font: {fontSize: 16},
+  width: '85%',
+  height: 100,
+  top: 10,
+  borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
+  borderColor: '#e6e6e6',
+  borderRadius: 5,
+  autocorrect: false,
+  returnKeyType: Ti.UI.RETURNKEY_DONE,
+  maxLength: 150
+}
+
+'#registerBtn': {
+  color: '#ffffff',
+  font: {fontSize: 20},
+  backgroundColor: '#009900',
+  borderRadius: 5,
+  selectedColor: 'red',
+  width: '70%',
+  height: 40,
+  top: 30
+}

@@ -1,0 +1,23 @@
+<Alloy>
+  <Window id="initialSettingWin" onClick="hideKeyboard">
+    <View class="body">
+      <View class="navBar">
+        <View class="navItems">
+          <Label class="navTitle">初期設定</Label>
+        </View>
+      </View>
+      <View class="container">
+        <View class="verticalContainer">
+          <Label id="app">作物観察記録</Label>
+
+          <TextField id="user_name" hintText="ユーザ名" onClick="setKeyboardOwner" />
+
+          <Label class="registerFormTitle">実習のテーマを記入してください。（後からでも記入が可能です）</Label>
+          <TextArea id="theme" onClick="setKeyboardOwner" />
+
+          <Button id="registerBtn" onClick="saveInitialSetting">登録</Button>
+        </View>
+      </View>
+    </View>
+  </Window>
+</Alloy>

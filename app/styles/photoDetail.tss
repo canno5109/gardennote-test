@@ -1,0 +1,5 @@
+'#optionDialog': {
+  title: '操作を選択してください',
+  tintColor: '#009900',
+  cancel: 2
+}

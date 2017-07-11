@@ -78,7 +78,6 @@ function saveData() {
 
 // 表示されたキーボードのオーナーを格納
 function setKeyboardOwner(e) {
-  alert('click');
   currentKeyboardOwner = e.source;
   e.cancelBubble = true;
 };

@@ -3,19 +3,9 @@ Alloy.Globals.recordPropertiesNavigationWindow = $.recordPropertiesNav;
 
 function updateRecordProperties() {
   var themeItem = $.photoListSection.getItemAt(1);
-  var cropItem = $.photoListSection.getItemAt(3);
-  var workItem = $.photoListSection.getItemAt(5);
-  themeItem.name.text =  Ti.App.Properties.getObject('recordProperties').theme == '' ? '未入力' : Ti.App.Properties.getObject('recordProperties').theme;
-  themeItem.name.color = Ti.App.Properties.getObject('recordProperties').theme == null ? '#808080' : '#464646';
-  cropItem.name.text =  Ti.App.Properties.getObject('recordProperties').name == null ? '未選択' : Ti.App.Properties.getObject('recordProperties').name;
-  cropItem.name.color = Ti.App.Properties.getObject('recordProperties').name == null ? '#808080' : '#464646';
-  workItem.name.text =  Ti.App.Properties.getObject('recordProperties').work == null ? '未選択' : Ti.App.Properties.getObject('recordProperties').work;
-  workItem.name.color =  Ti.App.Properties.getObject('recordProperties').work == null ? '#808080' : '#464646';
+  themeItem.name.text =  Ti.App.Properties.getString('theme') == '' ? '未入力' : Ti.App.Properties.getString('theme');
+  themeItem.name.color = Ti.App.Properties.getString('user_name') == null ? '#808080' : '#464646';
   $.photoListSection.updateItemAt(1, themeItem, {animated: false});
-  $.photoListSection.updateItemAt(3, cropItem, {animated: false});
-  $.photoListSection.updateItemAt(5, workItem, {animated: false});
-
-  Alloy.Globals.updateUI();
 };
 
 function onItemClick(e) {
@@ -25,15 +15,6 @@ function onItemClick(e) {
     Alloy.Globals.recordPropertiesNavigationWindow.openWindow(themeWin);
     break;
 
-    case 'crop':
-      var cropListWin = Alloy.createController('cropList').getView();
-    Alloy.Globals.recordPropertiesNavigationWindow.openWindow(cropListWin);
-    break;
-
-    case 'work':
-      if (Ti.App.Properties.getObject('recordProperties').name == null) {
-      return;
-    }
     var workListWin = Alloy.createController('workList').getView();
     Alloy.Globals.recordPropertiesNavigationWindow.openWindow(workListWin);
     break;
