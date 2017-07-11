@@ -8,3 +8,4 @@ Alloy.Globals.updateUI;
 Alloy.Globals.photoUpdate = false;
 Alloy.Globals.cropUpdate = false;
 Alloy.Globals.workUpdate = false;
+

@@ -2,11 +2,15 @@ exports.definition = {
   config: {
     columns: {
       id: 'INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT',
-      name: 'TEXT',
-      photo: 'TEXT',
+      user_name: 'TEXT',
       date: 'TEXT',
+      crop_name: 'TEXT',
       work: 'TEXT',
-      note: 'TEXT'
+      work_reason: 'TEXT',
+      technical_supplement: 'TEXT',
+      consideration: 'TEXT',
+      evidence: 'TEXT',
+      photo: 'BLOB'
     },
     adapter: {
       type: 'sql',

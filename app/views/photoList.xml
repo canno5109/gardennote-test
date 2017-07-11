@@ -1,7 +1,7 @@
 <Alloy>
   <Tab title="写真一覧" icon="/icons/images.png">
     <NavigationWindow id="photoListNav">
-      <Window id="photoListWin" onClose="cleanup">
+      <Window id="photoListWin" onClose="cleanup" onClick="hideKeyboard">
         <View class="body">
           <View class="navBar">
             <View class="navItems">
@@ -32,7 +32,7 @@
                 dataTransform="transformPhotoList"
                 dataFilter="filterPhotoList"
                 dataFunction="updatePhotoList" >
-                <ListItem template="photoListTemplate"
+                <ListItem template="photoListTemplate" cropId="{id}"
                   photo:image="{photo}"
                   name:text="{name}"
                   work:text="{work}"

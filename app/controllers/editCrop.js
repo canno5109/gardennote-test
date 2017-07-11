@@ -61,6 +61,7 @@ function confirmDeleteCrop(e) {
           });
         }
         cropModel.destroy();
+        Alloy.Globals.cropUpdate = true;
         closeWin();
       }
     });

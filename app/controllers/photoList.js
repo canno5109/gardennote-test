@@ -1,6 +1,9 @@
 var args = $.args;
 var currentKeyboardOwner = undefined;
+
 Alloy.Globals.photoListNavigationWindow = $.photoListNav;
+var cropPickerValue = $.cropField.getValue(); // crop Picker で取得した文字
+var workPickerValue = $.workField.getValue(); // work Picker で取得した文字
 
 function cleanup() {
   $.destroy();
@@ -194,7 +197,6 @@ function hidePicker() {
   });
 };
 
-var cropPickerValue, workPickerValue;
 function getCropPickerValue(e) {
   cropPickerValue = $.cropPickerColumn.rows[e.rowIndex].title;
 };
@@ -287,28 +289,7 @@ function filterPhotoDetail(collection) {
 };
 
 Alloy.Globals.updateUI = function () {
-  if (Alloy.Globals.cropUpdate) {
-    Ti.API.debug('作物更新');
-    Alloy.Collections.crop.fetch({
-      success: function() {
-        updateCropValue();
-        Alloy.Globals.cropUpdate = false;
-      }
-    });
-  }
-
-  if (Alloy.Globals.workUpdate) {
-    Ti.API.debug('農作業更新');
-    Alloy.Collections.work.fetch({
-      success: function() {
-        updateWorkValue();
-        Alloy.Globals.workUpdate = false;
-      }
-    });
-  }
-
   if (Alloy.Globals.photoUpdate) {
-    Ti.API.debug('写真更新');
     Alloy.Collections.photoRecord.fetch({
       success: function() {
         updatePhotoList();
@@ -317,10 +298,33 @@ Alloy.Globals.updateUI = function () {
       }
     });
   }
+
+  if (Alloy.Globals.cropUpdate) {
+    Alloy.Collections.crop.fetch({
+      query: {
+        statement: 'SELECT DISTINCT name FROM crop',
+        params: []
+      },
+      success: function() {
+        updateCropValue();
+        Alloy.Globals.cropUpdate = false;
+      }
+    });
+  }
+
+  if (Alloy.Globals.workUpdate) {
+    Alloy.Collections.work.fetch({
+      query: {
+        statement: 'SELECT DISTINCT name FROM work',
+        params: []
+      },
+      success: function() {
+        updateWorkValue();
+        Alloy.Globals.workUpdate = false;
+      }
+    });
+  }
 };
-
-Alloy.Collections.photoRecord.fetch();
-
 
 function transformCropValue(model) {
   var transform = model.toJSON();
@@ -340,5 +344,16 @@ function filterWorkValue(collection) {
   return collection.models;
 };
 
-Alloy.Collections.crop.fetch();
-Alloy.Collections.work.fetch();
+Alloy.Collections.photoRecord.fetch();
+Alloy.Collections.crop.fetch({
+  query: {
+    statement: 'SELECT DISTINCT name FROM crop',
+    params: []
+  }
+});
+Alloy.Collections.work.fetch({
+  query: {
+    statement: 'SELECT DISTINCT name FROM work',
+    params: []
+  }
+});

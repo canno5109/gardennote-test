@@ -60,6 +60,7 @@ function confirmDeleteWork(e) {
           workId: null
         });
         workModel.destroy();
+        Alloy.Globals.workUpdate = true;
         closeWin();
       }
     });
