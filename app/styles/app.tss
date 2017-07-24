@@ -1,7 +1,8 @@
 'NavigationWindow[platform=ios]': {
   navBarHidden: true,
   backgroundColor: '#000000',
-  bubbleParent: false
+  bubbleParent: false,
+  modal: true
 }
 
 'Window': {

@@ -1,0 +1,12 @@
+<Alloy>
+  <View id="cameraContainer">
+    <View class="topBackground">
+    </View>
+    <View class="displayCotnainer">
+    </View>
+    <View class="option">
+      <Button class="modeButton" onSingletap="closeCamera" />
+      <Button class="cameraBtn" onSingletap="takePicture" />
+    </View>
+  </View>
+</Alloy>

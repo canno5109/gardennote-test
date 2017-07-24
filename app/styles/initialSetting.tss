@@ -1,6 +1,5 @@
 '#initialSettingWin': {
-  modal: true,
-  modalTransitionStyle: Ti.UI.iOS.MODAL_TRANSITION_STYLE_CROSS_DISSOLVE
+  modal: true
 }
 
 '.verticalContainer': {

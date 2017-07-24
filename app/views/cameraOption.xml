@@ -1,0 +1,22 @@
+<Alloy>
+  <NavigationWindow id="cameraOptionNav">
+    <Window id="cameraOptionWin">
+      <View id="editPicture">
+        <ImageView id="photo" />
+        <View class="edit">
+          <View id="closeView" class="editBtn">
+            <View class="centerView">
+              <Button class="eventButton" onSingletap="closeWin" title="再撮影" backgroundColor="#990000" />
+            </View>
+          </View>
+
+          <View id="saveView" class="editBtn">
+            <View class="centerView">
+              <Button id="saveBtn" class="eventButton" onSingletap="openRegisterWin" title="決定" backgroundColor="#009999" />
+            </View>
+          </View>
+        </View>
+      </View>
+    </Window>
+  </NavigationWindow>
+</Alloy>

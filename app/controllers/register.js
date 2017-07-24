@@ -12,7 +12,7 @@ function closeWin() {
 };
 
 function setDefaultRegisterData() {
-  $.userNameForm.setValue('菅野 祐馬');
+  $.userNameForm.setValue(Ti.App.Properties.getString('user_name'));
   $.dateForm.setText(selectionDate);
 };
 
@@ -55,7 +55,7 @@ function saveData() {
   var consideration = $.considerationForm.value === '記録の考察を記入してください' ? '' : $.considerationForm.value;
   var evidence = '';
 
-  var parameter = {
+  var photoRecord = Alloy.createModel('photoRecord', {
     user_name: $.userNameForm.value,
     date: date,
     crop_name: $.cropForm.value,
@@ -65,12 +65,11 @@ function saveData() {
     consideration: consideration,
     evidence: evidence,
     photo: args.photo
-  };
-
-  var workRecordModel = Alloy.createModel('workRecord', parameter);
-  workRecordModel.save(null, {
+  });
+  photoRecord.save(null, {
     success: function() {
       closeWin();
+      Alloy.Globals.cameraOptionNavigationWindow.close();
     }
   });
 };

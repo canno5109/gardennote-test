@@ -1,0 +1,47 @@
+'#cameraOptionWin': {
+  modal: true
+}
+
+'#editPicture': {
+  bottom: 0,
+  width: Ti.UI.FILL,
+  height: Ti.UI.FILL,
+  backgroundColor: '#000000'
+}
+
+'#photo': {
+  top: 70,
+  bottom: 100,
+  width: Ti.UI.FILL,
+  height: Ti.UI.FILL,
+  backgroundColor: '#000000'
+}
+
+'.edit': {
+  layout: 'horizontal',
+  bottom: 0,
+  width: Ti.UI.FILL,
+  height: 100,
+  backgroundColor: '#000000',
+  bubbleParent: false
+}
+
+'.editBtn': {
+  top: 0,
+  height: Ti.UI.FILL
+}
+
+'.eventButton': {
+  left: 5,
+  right: 5,
+  borderRadius: 10,
+  borderColor: '#FFFFFF',
+  borderWidth: 3,
+  width: Ti.UI.FILL,
+  height: 50,
+  color: '#FFFFFF',
+  font: {
+    fontSize: 20,
+    fontWeight: 'bold'
+  }
+}

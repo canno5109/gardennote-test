@@ -1,7 +1,8 @@
 '#cameraContainer': {
   width: Ti.UI.FILL,
   height: Ti.UI.FILL,
-  backgroundColor: 'transparent'
+  backgroundColor: 'transparent',
+  zIndex: 1
 }
 
 '.topBackground': {

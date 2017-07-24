@@ -1,5 +1,6 @@
 var args = $.args;
 Alloy.Globals.tabGroup = $.tabGroup;
+var overlay = Alloy.createController('cameraOverlay').getView();
 
 Alloy.Globals.customCameraContainer = Ti.UI.createView({
   bottom: 0,
@@ -69,15 +70,26 @@ var cameraLabel = Ti.UI.createLabel({
 cameraBtnContainer.add(cameraBtn);
 cameraBtnContainer.add(cameraLabel);
 
-cameraBtn.addEventListener('singletap', function() {
+Alloy.Globals.showCamera = function() {
   if (!ENV_DEV) {
-    var cameraWin = Alloy.createController('camera').getView();
-    $.tabGroup.close();
-    setTimeout(function() {
-      cameraWin.open();
-    }, 500);
+    Ti.Media.showCamera({
+      success: function(e) {
+        Alloy.createController('cameraOption', {image: e.media}).getView().open({
+          modalTransitionStyle: Ti.UI.iOS.MODAL_TRANSITION_STYLE_CROSS_DISSOLVE
+        });
+      },
+      overlay: overlay,
+      showControls: false,
+      transform: Ti.UI.create2DMatrix().scale(1, 1).translate(0, 70),
+      saveToPhotoGallery: false,
+      autoHide: false,
+      allowEditing: false,
+      mediaTypes: Ti.Media.MEDIA_TYPE_PHOTO
+    });
   }
-});
+};
+
+cameraBtn.addEventListener('singletap', Alloy.Globals.showCamera);
 
 Alloy.Globals.customCameraContainer.add(tabCover);
 Alloy.Globals.customCameraContainer.add(cameraBtnShadow);

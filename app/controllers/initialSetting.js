@@ -25,8 +25,8 @@ function saveInitialSetting() {
   Ti.App.Properties.setString('theme', $.theme.value);
   Ti.App.Properties.setBool('initialActivation', true);
 
+  $.initialSettingWin.close();
   Alloy.createController('tab').getView().open({
-    modal: true,
-    modalStyle: Titanium.UI.iPhone.MODAL_PRESENTATION_CURRENT_CONTEXT
+    modalTransitionStyle: Ti.UI.iOS.MODAL_TRANSITION_STYLE_CROSS_DISSOLVE
   });
 };
