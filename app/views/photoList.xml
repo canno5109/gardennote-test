@@ -5,6 +5,7 @@
         <View class="body">
           <View class="navBar">
             <View class="navItems">
+              <Button id="cameraBtn" onSingletap="Alloy.Globals.showCamera" />
               <Label class="navTitle">写真一覧</Label>
               <Button class="addBtn" onSingletap="addPhoto" />
             </View>

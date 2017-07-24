@@ -1,10 +1,6 @@
 <Alloy>
   <TabGroup id="tabGroup" onClose="cleanup">
     <Require src="photoList" type="view" />
-    <Tab>
-      <Window>
-      </Window>
-    </Tab>
     <Require src="recordProperties" type="view" />
   </TabGroup>
 </Alloy>

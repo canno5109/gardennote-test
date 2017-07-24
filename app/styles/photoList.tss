@@ -1,3 +1,15 @@
+'#cameraBtn': {
+  title: '\uf030',
+  font: {
+    fontSize: 24,
+    fontFamily: 'FontAwesome'
+  },
+  color: '#000000',
+  left: 10,
+  width: 40,
+  height: 40
+}
+
 '#photoListView': {
   top: 0,
   bottom: 0,
@@ -113,8 +125,7 @@
   backgroundColor: '#FFFFFF',
   visible: false,
   zIndex: 1
-}
-
+},
 '#recordingFastestMessage': {
   color: '#808080',
   font: {fontSize: 16},

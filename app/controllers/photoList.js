@@ -90,3 +90,26 @@ Alloy.Globals.updatePhotoList = function () {
 };
 
 Alloy.Collections.photoRecord.fetch();
+
+
+
+var overlay = Alloy.createController('cameraOverlay').getView();
+
+Alloy.Globals.showCamera = function() {
+  if (!ENV_DEV) {
+    Ti.Media.showCamera({
+      success: function(e) {
+        Alloy.createController('cameraOption', {image: e.media}).getView().open({
+          modalTransitionStyle: Ti.UI.iOS.MODAL_TRANSITION_STYLE_CROSS_DISSOLVE
+        });
+      },
+      overlay: overlay,
+      showControls: false,
+      transform: Ti.UI.create2DMatrix().scale(1, 1).translate(0, 70),
+      saveToPhotoGallery: false,
+      autoHide: false,
+      allowEditing: false,
+      mediaTypes: Ti.Media.MEDIA_TYPE_PHOTO
+    });
+  }
+};
