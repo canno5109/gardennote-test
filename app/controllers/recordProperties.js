@@ -4,7 +4,7 @@ Alloy.Globals.recordPropertiesNavigationWindow = $.recordPropertiesNav;
 function updateRecordProperties() {
   var themeItem = $.photoListSection.getItemAt(1);
   themeItem.name.text =  Ti.App.Properties.getString('theme') == '' ? '未入力' : Ti.App.Properties.getString('theme');
-  themeItem.name.color = Ti.App.Properties.getString('user_name') == null ? '#808080' : '#464646';
+  themeItem.name.color = Ti.App.Properties.getString('theme') == '' ? '#808080' : '#464646';
   $.photoListSection.updateItemAt(1, themeItem, {animated: false});
 };
 

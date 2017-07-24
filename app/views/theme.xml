@@ -1,5 +1,5 @@
 <Alloy>
-  <Window onOpen="setAreaValue" onClose="cleanup">
+  <Window>
     <View class="body">
       <View class="navBar">
         <View class="navItems">
@@ -9,6 +9,7 @@
       </View>
       <View class="container">
         <View class="center">
+          <Label id="advice">作物観察記録を利用する目的やテーマを入力してください</Label>
           <View class="areaContainer">
             <TextArea id="themeArea" class="inputArea" onClick="setKeyboardOwner" />
           </View>

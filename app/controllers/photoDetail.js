@@ -1,7 +1,7 @@
 var args = $.args;
 
 
-function clewanup() {
+function cleanup() {
   $.destroy();
 };
 

@@ -1,10 +1,7 @@
 var args = $.args;
 var currentKeyboardOwner = undefined;
-var themeAdvice = '作物観察記録を利用する目的やテーマを入力してください';
 
-function cleanup() {
-  $.destroy();
-};
+$.themeArea.setValue(Ti.App.Properties.getString('theme'));
 
 function closeWin() {
   $.theme.close();
@@ -25,31 +22,11 @@ function hideKeyboard() {
 
 function updateTheme() {
   var value = $.themeArea.getValue();
-  if (value == '' || value == themeAdvice) {
-    Ti.App.Properties.setObject('recordProperties', {
-      name: Ti.App.Properties.getObject('recordProperties').name,
-      work: Ti.App.Properties.getObject('recordProperties').work,
-      cropId: Ti.App.Properties.getObject('recordProperties').cropId,
-      workId: Ti.App.Properties.getObject('recordProperties').workId,
-      theme: ''
-    });
+  if (value == '') {
+    Ti.App.Properties.setString('theme', '');
   } else {
-    Ti.App.Properties.setObject('recordProperties', {
-      name: Ti.App.Properties.getObject('recordProperties').name,
-      work: Ti.App.Properties.getObject('recordProperties').work,
-      cropId: Ti.App.Properties.getObject('recordProperties').cropId,
-      workId: Ti.App.Properties.getObject('recordProperties').workId,
-      theme: value
-    });
+    Ti.App.Properties.setString('theme', value);
   }
-
   closeWin();
 };
 
-function setAreaValue() {
-  if (Ti.App.Properties.getObject('recordProperties').theme != '') {
-    $.themeArea.setValue(Ti.App.Properties.getObject('recordProperties').theme);
-  } else {
-    $.themeArea.setValue(themeAdvice);
-  }
-};
