@@ -36,6 +36,13 @@
                   name:text=""
                   name:color="#464646" />
 
+                <ListItem template="header" header:text="ユーザ名" />
+                <ListItem template="recordPropertiesTemplate" itemId="user_name"
+                  icon:text="\uf007"
+                  icon:color="#464646"
+                  name:text=""
+                  name:color="#464646" />
+
                 <ListItem template="header" header:text="みどりボックス" />
                 <ListItem template="recordPropertiesTemplate" itemId="midori"
                   icon:text="\uf187"

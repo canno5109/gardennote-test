@@ -3,30 +3,35 @@ Alloy.Globals.recordPropertiesNavigationWindow = $.recordPropertiesNav;
 
 function updateRecordProperties() {
   var themeItem = $.photoListSection.getItemAt(1);
-  themeItem.name.text =  Ti.App.Properties.getString('theme') == '' ? '未入力' : Ti.App.Properties.getString('theme');
+  themeItem.name.text = Ti.App.Properties.getString('theme') == '' ? '未入力' : Ti.App.Properties.getString('theme');
   themeItem.name.color = Ti.App.Properties.getString('theme') == '' ? '#808080' : '#464646';
   $.photoListSection.updateItemAt(1, themeItem, {animated: false});
+
+  var user_nameItem = $.photoListSection.getItemAt(3);
+  user_nameItem.name.text = Ti.App.Properties.getString('user_name');
+  $.photoListSection.updateItemAt(3, user_nameItem, {animated: false});
 };
 
 function onItemClick(e) {
   switch (e.itemId) {
     case 'theme':
       var themeWin = Alloy.createController('theme').getView();
-    Alloy.Globals.recordPropertiesNavigationWindow.openWindow(themeWin);
-    break;
+     Alloy.Globals.recordPropertiesNavigationWindow.openWindow(themeWin);
+     break;
 
-    var workListWin = Alloy.createController('workList').getView();
-    Alloy.Globals.recordPropertiesNavigationWindow.openWindow(workListWin);
-    break;
+    case 'user_name':
+     var user_nameWin = Alloy.createController('user_name').getView();
+     Alloy.Globals.recordPropertiesNavigationWindow.openWindow(user_nameWin);
+     break;
 
     case 'midori':
       var midoriBoxWin = Alloy.createController('midoriBox').getView();
-    Alloy.Globals.recordPropertiesNavigationWindow.openWindow(midoriBoxWin);
-    break;
+     Alloy.Globals.recordPropertiesNavigationWindow.openWindow(midoriBoxWin);
+     break;
 
     case 'mail':
       openEmailDialog();
-    break;
+     break;
 
     default:
       break;
