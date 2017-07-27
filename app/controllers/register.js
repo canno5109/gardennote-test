@@ -68,7 +68,8 @@ function saveData() {
   });
   photoRecord.save(null, {
     success: function() {
-      closeWin();
+      Alloy.Globals.updatePhotoList();
+      // closeWin();
       Alloy.Globals.cameraOptionNavigationWindow.close();
     }
   });

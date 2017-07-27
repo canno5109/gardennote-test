@@ -1,3 +1,7 @@
+'.container': {
+  backgroundColor: '#009900',
+}
+
 '#cameraBtn': {
   title: '\uf030',
   font: {
@@ -12,88 +16,119 @@
 
 '#photoListView': {
   top: 0,
-  bottom: 0,
   height: Ti.UI.FILL,
-  backgroundColor: '#FFFFFF',
-  separatorColor: 'transparent',
-  listSeparatorInsets: {right: 0, left: 0}
-}
-
+  backgroundColor: '#009900',
+  separatorStyle: Ti.UI.TABLE_VIEW_SEPARATOR_STYLE_NONE
+},
 '.photoTemplate': {
   width: Ti.UI.FILL,
-  height: 160,
-  backgroundColor: '#FFFFFF',
+  height: Ti.UI.SIZE,
+  backgroundColor: '#009900',
   selectionStyle: Titanium.UI.iOS.ListViewCellSelectionStyle.NONE
-}
-
+},
 '.listItemContainer': {
-  top: 5,
-  bottom: 5,
-  layout: 'horizontal',
-  horizontalWrap: false,
-  width: '95%',
-  height: Ti.UI.FILL,
-  backgroundColor: '#FFFFFF',
-  viewShadowColor: '#B5B5B5',
-  viewShadowOffset: { x: 2, y: 2 },
-  viewShadowRadius: 1
-}
-
-'.photoContainer': {
-  width: 100,
-  height: 150,
-  backgroundColor: '#FFDAB9'
-}
-
-'.photo': {
-  width: Ti.UI.FILL,
-  height: Ti.UI.FILL,
-  backgroundColor: '#FFFFFF'
-}
-
-'.textContainer': {
-  width: Ti.UI.FILL,
-  height: Ti.UI.FILL,
-  backgroundColor: '#cfedc6'
-}
-
-'.crop_name': {
-  color: '#464646',
-  textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-  font: {
-    fontSize: 20
-  },
-  width: Ti.UI.FILL,
-  height: 20,
-  top: 5,
-  left: 5,
-  right: 5
-}
-
-'.work': {
-  color: '#009900',
-  font: {
-    fontSize: 14
-  },
-  width: Ti.UI.FILL,
-  height: 20,
-  top: 30,
-  left: 5,
-  right: 5
-}
-
-'.date': {
-  color: '#009900',
-  font: {
-    fontSize: 14
-  },
+  top: 10,
+  layout: 'vertical',
+  horizontalWrap: true,
   width: Ti.UI.FILL,
   height: Ti.UI.SIZE,
-  top: 50,
-  left: 5,
-  right: 5
-}
-
+  backgroundColor: '#FFFFFF'
+},
+'.iconContainer': {
+  layout: 'horizontal',
+  width: Ti.UI.SIZE,
+  height: Ti.UI.FILL
+},
+'.topItemContainer': {
+  width: '95%',
+  height: 30
+},
+'.user_nameIcon': {
+  text: '\uf007',
+  color: '#464646',
+  font: {
+    fontSize: 13,
+    fontFamily: 'FontAwesome'
+  },
+  width: Ti.UI.SIZE,
+  height: Ti.UI.FILL,
+},
+'.user_name': {
+  color: '#464646',
+  font: {fontSize: 14},
+  width: Ti.UI.SIZE,
+  height: Ti.UI.FILL,
+  left: 5
+},
+'.dateIcon': {
+  text: '\uf017',
+  color: '#808080',
+  font: {
+    fontSize: 13,
+    fontFamily: 'FontAwesome'
+  },
+  width: Ti.UI.SIZE,
+  height: Ti.UI.FILL,
+  left: 10
+},
+'.date': {
+  color: '#808080',
+  font: {fontSize: 14},
+  width: Ti.UI.SIZE,
+  height: Ti.UI.FILL,
+  left: 5
+},
+'.centerItemContainer': {
+  layout: 'horizontal',
+  width: '95%',
+  height: 30
+},
+'.crop_nameIcon': {
+  text: '\uf06c',
+  color: '#009900',
+  font: {
+    fontSize: 15,
+    fontFamily: 'FontAwesome'
+  },
+  width: Ti.UI.SIZE,
+  height: Ti.UI.FILL
+},
+'.crop_name': {
+  color: '#464646',
+  font: {fontSize: 16},
+  textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
+  width: Ti.UI.SIZE,
+  height: Ti.UI.FILL,
+  left: 5
+},
+'.workIcon': {
+  text: '\uf0ad',
+  color: '#daa520',
+  font: {
+    fontSize: 15,
+    fontFamily: 'FontAwesome'
+  },
+  width: Ti.UI.SIZE,
+  height: Ti.UI.FILL,
+  left: 10
+},
+'.work': {
+  color: '#464646',
+  font: {fontSize: 16},
+  textAlign: Ti.UI.TEXT_ALIGNMENT_RIGHT,
+  width: Ti.UI.SIZE,
+  height: Ti.UI.FILL,
+  left: 5
+},
+'.photoItem': {
+  width: Ti.UI.SIZE,
+  height: Ti.UI.SIZE,
+  backgroundColor: '#FFFFFF'
+},
+'.bottomItemContainer': {
+  width: Ti.UI.FILL,
+  height: 10
+},
 '.noteTitle': {
   color: '#464646',
   font: {
@@ -104,8 +139,7 @@
   top: 70,
   left: 5,
   right: 5
-}
-
+},
 '.evidence': {
   color: '#794040',
   verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_TOP,
@@ -132,4 +166,47 @@
   width: '90%',
   height: Ti.UI.SIZE,
   textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
+}
+
+
+/* 写真詳細 */
+'#photoDetailContainer': {
+  backgroundColor: '#000000',
+  width: '100%',
+  height: '100%',
+  bottom: '-100%'
+},
+'#hidePhotoDetailBtn': {
+  title: '\uf00d',
+  font: {
+    fontSize: 24,
+    fontFamily: 'FontAwesome'
+  },
+  color: '#FFFFFF',
+  top: 20,
+  left: 5,
+  width: 40,
+  height: 40,
+  zIndex: 1
+},
+'#photoSlide': {
+  backgroundColor: '#000000'
+},
+'.photoScale': {
+  maxZoomScale: 1
+},
+'.photo': {
+  width: Ti.UI.FILL,
+  height: Ti.UI.FILL,
+  contentWidth: Ti.UI.SIZE,
+  contentHeight: Ti.UI.SIZE
+}
+
+'#upAnimation': {
+  bottom: 0,
+  duration: 300
+},
+'#downAnimation': {
+  bottom: '-100%',
+  duration: 300
 }

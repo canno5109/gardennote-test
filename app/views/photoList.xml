@@ -15,15 +15,24 @@
               <Templates>
                 <ItemTemplate name="photoListTemplate" class="photoTemplate">
                   <View class="listItemContainer">
-                    <View class="photoContainer">
-                      <ImageView bindId="photo" class="photo" />
+                    <View class="topItemContainer">
+                      <View class="iconContainer" left="2">
+                        <Label class="user_nameIcon" />
+                        <Label bindId="user_name" class="user_name" />
+                      </View>
+                      <View class="iconContainer" right="0">
+                        <Label class="dateIcon" />
+                        <Label bindId="date" class="date" />
+                      </View>
                     </View>
-                    <View class="textContainer">
+                    <View class="centerItemContainer">
+                      <Label class="crop_nameIcon" />
                       <Label bindId="crop_name" class="crop_name" />
+                      <Label class="workIcon" />
                       <Label bindId="work" class="work" />
-                      <Label bindId="date" class="date" />
-                      <Label class="noteTitle">考察:</Label>
-                      <Label bindId="evidence" class="evidence" />
+                    </View>
+                    <ImageView bindId="photo" class="photoItem" />
+                    <View class="bottomItemContainer">
                     </View>
                   </View>
                 </ItemTemplate>
@@ -33,14 +42,13 @@
                 dataTransform="transformPhotoList"
                 dataFilter="filterPhotoList"
                 dataFunction="updatePhotoList" >
-                <ListItem template="photoListTemplate" cropId="{id}"
-                  photo:image="{photo}"
+                <ListItem template="photoListTemplate"
+                  cropId="{id}"
+                  user_name:text="{user_name}"
+                  date:text="{date}"
                   crop_name:text="{crop_name}"
                   work:text="{work}"
-                  date:text="{date}"
-                  evidence:text="{evidence}"
-                  workValue="{workValue}"
-                  dateValue="{dateValue}" >
+                  photo:image="{photo}">
                 </ListItem>
               </ListSection>
             </ListView>
@@ -50,6 +58,27 @@
             </View>
           </View>
         </View>
+
+
+        <View id="photoDetailContainer">
+          <Button id="hidePhotoDetailBtn" onSingletap="hidePhotoDetail" />
+          <ScrollableView id="photoSlide"
+            dataCollection="photoRecord"
+            dataTransform="transformPhotoDetail"
+            dataFilter="filterPhotoDetail"
+            dataFuncion="updatePhotoDetail">
+            <ScrollView class="photoScale"
+              zoomScale="{zoomScale}"
+              minZoomScale="{zoomScale}">
+              <ImageView class="photo"
+                image="{photo}" />
+            </ScrollView>
+          </ScrollableView>
+        </View>
+
+
+        <Animation id="upAnimation" />
+        <Animation id="downAnimation" />
       </Window>
     </NavigationWindow>
   </Tab>
