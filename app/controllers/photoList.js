@@ -156,11 +156,11 @@ function transformPhotoList(model) {
   var widthSize, heightSize;
   if (referenceSize > Alloy.CFG.photoItemSize) {
     if (referenceSizeName == 'width') {
-      widthSize = Alloy.CFG.photoItemSize;
-      heightSize = Alloy.CFG.photoItemSize / ratio;
+      widthSize = Ti.Platform.displayCaps.platformWidth;
+      heightSize = Ti.Platform.displayCaps.platformWidth / ratio;
     } else {
-      widthSize = Alloy.CFG.photoItemSize / ratio;
-      heightSize = Alloy.CFG.photoItemSize;
+      widthSize = Ti.Platform.displayCaps.platformHeight / ratio;
+      heightSize = Ti.Platform.displayCaps.platformHeight;
     }
   } else {
     if (referenceSizeName == 'width') {
@@ -174,13 +174,13 @@ function transformPhotoList(model) {
 
   var pictImage = Ti.UI.createImageView({
     image: transform.photo,
-    width: Ti.UI.SIZE,
-    height: Ti.UI.SIZE
+    width: widthSize,
+    height: heightSize
   });
 
   var cropView = Ti.UI.createView({
-    width: widthSize,
-    height: heightSize
+    width: Alloy.CFG.photoItemSize,
+    height: Alloy.CFG.photoItemSize
   });
 
   cropView.add(pictImage);

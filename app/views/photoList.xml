@@ -36,9 +36,12 @@
                         <Button bindId="itemOptionBtn" class="itemOptionBtn" onSingletap="showItemOptionDialog" />
                       </View>
                     </View>
-                    <ImageView bindId="photo" class="photoItem" />
                     <View class="bottomItemContainer">
+                      <Label bindId="work_reason" class="work_reason" />
+                      <Label bindId="technical_supplement" class="technical_supplement" />
+                      <Label bindId="consideration" class="consideration" />
                     </View>
+                    <ImageView bindId="photo" class="photoItem" />
                   </View>
                 </ItemTemplate>
               </Templates>
@@ -60,6 +63,9 @@
                   date:text="{date}"
                   crop_name:text="{crop_name}"
                   work:text="{work}"
+                  work_reason:text="作業理由：{work_reason}"
+                  technical_supplement:text="技術的補足：{technical_supplement}"
+                  consideration:text="考察：{consideration}"
                   photo:image="{photo}">
                 </ListItem>
               </ListSection>

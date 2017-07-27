@@ -141,14 +141,41 @@
   width: Ti.UI.SIZE,
   height: Ti.UI.FILL
 },
-'.photoItem': {
-  width: Ti.UI.SIZE,
-  height: Ti.UI.SIZE,
-  backgroundColor: '#FFFFFF'
-},
 '.bottomItemContainer': {
+  layout: 'vertical',
+  width: '95%',
+  height: Ti.UI.SIZE
+},
+'.work_reason': {
+  color: '#464646',
+  font: {fontSize: 16},
+  textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
   width: Ti.UI.FILL,
-  height: 10
+  height: Ti.UI.SIZE,
+  top: 5
+},
+'.technical_supplement': {
+  color: '#464646',
+  font: {fontSize: 16},
+  textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
+  width: Ti.UI.FILL,
+  height: Ti.UI.SIZE,
+  top: 10
+},
+'.consideration': {
+  color: '#464646',
+  font: {fontSize: 16},
+  textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
+  width: Ti.UI.FILL,
+  height: Ti.UI.SIZE,
+  top: 10
+},
+'.photoItem': {
+  width: Alloy.CFG.photoItemSize,
+  height: Alloy.CFG.photoItemSize,
+  backgroundColor: '#FFFFFF',
+  top: 10,
+  bottom: 10
 },
 '.noteTitle': {
   color: '#464646',
