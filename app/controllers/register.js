@@ -2,6 +2,10 @@ var args = $.args;
 var currentKeyboardOwner = undefined;
 var selectionDate = Alloy.Globals.moment().format('YYYY/M/D');
 
+
+$.userNameForm.setValue(Ti.App.Properties.getString('user_name'));
+$.dateForm.setText(selectionDate);
+
 function cleanup() {
   $.destroy();
 };
@@ -9,11 +13,6 @@ function cleanup() {
 function closeWin() {
   hideKeyboard();
   $.registerWin.close();
-};
-
-function setDefaultRegisterData() {
-  $.userNameForm.setValue(Ti.App.Properties.getString('user_name'));
-  $.dateForm.setText(selectionDate);
 };
 
 function openDatePicker() {

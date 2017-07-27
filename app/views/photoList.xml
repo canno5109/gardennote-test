@@ -26,10 +26,15 @@
                       </View>
                     </View>
                     <View class="centerItemContainer">
-                      <Label class="crop_nameIcon" />
-                      <Label bindId="crop_name" class="crop_name" />
-                      <Label class="workIcon" />
-                      <Label bindId="work" class="work" />
+                      <View class="centerLeftItemContainer">
+                        <Label class="crop_nameIcon" />
+                        <Label bindId="crop_name" class="crop_name" />
+                        <Label class="workIcon" />
+                        <Label bindId="work" class="work" />
+                      </View>
+                      <View class="centerRightItemContainer">
+                        <Button bindId="itemOptionBtn" class="itemOptionBtn" onSingletap="showItemOptionDialog" />
+                      </View>
                     </View>
                     <ImageView bindId="photo" class="photoItem" />
                     <View class="bottomItemContainer">
@@ -43,7 +48,14 @@
                 dataFilter="filterPhotoList"
                 dataFunction="updatePhotoList" >
                 <ListItem template="photoListTemplate"
-                  cropId="{id}"
+                  itemOptionBtn:itemId="{id}"
+                  itemOptionBtn:user_name="{user_name}"
+                  itemOptionBtn:date="{datetime}"
+                  itemOptionBtn:crop_name="{crop_name}"
+                  itemOptionBtn:work="{work}"
+                  itemOptionBtn:work_reason="{work_reason}"
+                  itemOptionBtn:technical_supplement="{technical_supplement}"
+                  itemOptionBtn:consideration="{consideration}"
                   user_name:text="{user_name}"
                   date:text="{date}"
                   crop_name:text="{crop_name}"
@@ -66,7 +78,7 @@
             dataCollection="photoRecord"
             dataTransform="transformPhotoDetail"
             dataFilter="filterPhotoDetail"
-            dataFuncion="updatePhotoDetail">
+            dataFunction="updatePhotoDetail">
             <ScrollView class="photoScale"
               zoomScale="{zoomScale}"
               minZoomScale="{zoomScale}">
@@ -79,6 +91,14 @@
 
         <Animation id="upAnimation" />
         <Animation id="downAnimation" />
+
+        <OptionDialog id="itemOptionDialog" onClick="clickItemOptionDialog">
+          <Options>
+            <Option>編集する</Option>
+            <Option>削除する</Option>
+            <Option>キャンセル</Option>
+          </Options>
+        </OptionDialog>
       </Window>
     </NavigationWindow>
   </Tab>

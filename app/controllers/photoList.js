@@ -1,4 +1,5 @@
 var args = $.args;
+var itemId, user_name, date, crop_name, work, work_reason, technical_supplement, consideration;
 Alloy.Globals.photoListNavigationWindow = $.photoListNav;
 
 
@@ -28,6 +29,7 @@ function hideKeyboard() {
 };
 
 function openPhotoDetail(e) {
+  $.photoDetailContainer.setVisible(true);
   $.photoDetailContainer.animate($.upAnimation);
   $.photoSlide.setCurrentPage(e.itemIndex);
 };
@@ -80,8 +82,64 @@ function addPhoto() {
   });
 };
 
+function showItemOptionDialog() {
+  itemId = this.itemId;
+  user_name = this.user_name;
+  date = this.date;
+  crop_name = this.crop_name;
+  work = this.work;
+  work_reason = this.work_reason;
+  technical_supplement = this.technical_supplement;
+  consideration = this.consideration;
+
+  $.itemOptionDialog.setTintColor('#009900');
+  $.itemOptionDialog.show();
+};
+
+function clickItemOptionDialog(e) {
+  switch (e.index) {
+    case 0:
+      var arg = {
+        itemId: itemId,
+        user_name: user_name,
+        date: date,
+        crop_name: crop_name,
+        work: work,
+        work_reason: work_reason,
+        technical_supplement: technical_supplement,
+        consideration: consideration
+      };
+      var editRegisterWin = Alloy.createController('editRegister', arg).getView();
+      Alloy.Globals.photoListNavigationWindow.openWindow(editRegisterWin);
+      break;
+    case 1:
+      deleteItem();
+      break;
+    default:
+      break;
+  }
+};
+
+function deleteItem() {
+  Alloy.Collections.photoRecord.fetch({
+    query: {
+      statement: 'SELECT * FROM photoRecord WHERE id = ?',
+      params: [itemId]
+    },
+    success: function() {
+      var photoRecordModel = Alloy.Collections.photoRecord.first();
+      photoRecordModel.destroy({
+        success: function() {
+          Alloy.Globals.updatePhotoList();
+        }
+      });
+    }
+  });
+};
+
 function transformPhotoList(model) {
   var transform = model.toJSON();
+  transform.datetime = transform.date;
   transform.date = Alloy.Globals.moment(transform.date, 'YYYY-MM-DD').format('YYYY年M月D日');
 
   var ratio, referenceSize, referenceSizeName;
@@ -149,7 +207,9 @@ Alloy.Globals.updatePhotoList = function () {
 
 /* 写真詳細 */
 function hidePhotoDetail() {
-  $.photoDetailContainer.animate($.downAnimation);
+  $.photoDetailContainer.animate($.downAnimation, function() {
+    $.photoDetailContainer.setVisible(false);
+  });
 };
 
 function transformPhotoDetail(model) {

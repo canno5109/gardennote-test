@@ -1,4 +1,70 @@
 <Alloy>
-	<View class="container">
-	</View>
+  <Window>
+    <View class="body">
+      <View class="navBar">
+        <View class="navItems">
+          <Button class="backBtn" onSingletap="closeWin" />
+          <Label class="navTitle">編集</Label>
+        </View>
+      </View>
+      <View class="container">
+        <ScrollView class="verticalContainer">
+          <View class="registerFormTitleContainer">
+            <Label class="registerFormTitle">登録者</Label>
+            <Label class="required">※必須</Label>
+          </View>
+          <TextField id="userNameForm" hintText="登録者" onClick="setKeyboardOwner" />
+
+          <View class="registerFormTitleContainer">
+            <Label class="registerFormTitle">日付</Label>
+            <Label class="required"></Label>
+          </View>
+          <View class="dateFormContainer" onSingletap="openDatePicker">
+            <Label id="dateForm" />
+            <Button class="dropBtn" />
+          </View>
+
+          <View class="registerFormTitleContainer">
+            <Label class="registerFormTitle">作物名</Label>
+            <Label class="required">※必須</Label>
+          </View>
+          <TextField id="cropForm" value="りんご" hintText="作物名を入力してください" onClick="setKeyboardOwner" />
+
+          <View class="registerFormTitleContainer">
+            <Label class="registerFormTitle">農作業</Label>
+            <Label class="required">※必須</Label>
+          </View>
+          <TextField id="workForm" value="摘果" hintText="農作業名を入力してください" onClick="setKeyboardOwner" />
+
+          <View class="registerFormTitleContainer">
+            <Label class="registerFormTitle">作業理由</Label>
+            <Label class="required"></Label>
+          </View>
+          <TextArea id="workReasonForm" value="農作業を実施した理由を入力してください" onClick="setKeyboardOwner" />
+
+          <View class="registerFormTitleContainer">
+            <Label class="registerFormTitle">技術的補足</Label>
+            <Label class="required"></Label>
+          </View>
+          <TextArea id="technicalSupplementForm" value="実施した農作業の具体的な説明を記入してください" onClick="setKeyboardOwner" />
+
+          <View class="registerFormTitleContainer">
+            <Label class="registerFormTitle">考察</Label>
+            <Label class="required"></Label>
+          </View>
+          <TextArea id="considerationForm" value="記録の考察を記入してください" onClick="setKeyboardOwner" />
+
+          <Button id="registerBtn" onClick="updateData">更新する</Button>
+        </ScrollView>
+
+        <View id="datePickerBox">
+          <View id="datePickerToolBar">
+            <Button id="datePickerCancel" onClick="datePickerCancelClick" />
+            <Button id="datePickerDone" onClick="datePickerDoneClick" />
+          </View>
+          <Picker id="datePicker" onChange="setDate" />
+        </View>
+      </View>
+    </View>
+  </Window>
 </Alloy>
