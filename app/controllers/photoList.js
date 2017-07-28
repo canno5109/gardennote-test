@@ -179,8 +179,8 @@ function transformPhotoList(model) {
   });
 
   var cropView = Ti.UI.createView({
-    width: Alloy.CFG.photoItemSize,
-    height: Alloy.CFG.photoItemSize
+    width: Alloy.CFG.photoItemSize < widthSize ? Alloy.CFG.photoItemSize : Ti.UI.SIZE,
+    height: Alloy.CFG.photoItemSize < heightSize ? Alloy.CFG.photoItemSize : Ti.UI.SIZE
   });
 
   cropView.add(pictImage);

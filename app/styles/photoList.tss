@@ -8,10 +8,31 @@
     fontSize: 24,
     fontFamily: 'FontAwesome'
   },
-  color: '#000000',
+  color: '#464646',
   left: 10,
   width: 40,
   height: 40
+},
+'#cameraLabel': {
+  text: '撮影',
+  font: {fontSize: 11},
+  color: '#464646',
+  textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+  top: 40,
+  left: 10,
+  width: 40,
+  height: 13
+}
+
+'#addBtnLabel': {
+  text: '追加',
+  font: {fontSize: 11},
+  color: '#464646',
+  textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+  top: 40,
+  right: 10,
+  width: 40,
+  height: 13
 }
 
 '#photoListView': {
@@ -171,8 +192,8 @@
   top: 10
 },
 '.photoItem': {
-  width: Alloy.CFG.photoItemSize,
-  height: Alloy.CFG.photoItemSize,
+  width: Ti.UI.SIZE,
+  height: Ti.UI.SIZE,
   backgroundColor: '#FFFFFF',
   top: 10,
   bottom: 10
