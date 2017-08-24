@@ -9,17 +9,17 @@ function closeWin() {
 
 // ログインセッションを生成
 function createLoginSession() {
+  Ti.API.debug('ログインセッションを生成しています...');
+
   var url = 'https://midori-cloud.net/api/v2/auth';
   var parameter = { mail_addr: 'takagi-m@iwate-pu.ac.jp', password: 'midori-t@k@gi' };
 
   var client = Ti.Network.createHTTPClient({
     onload: function(e) {
       var json = JSON.parse(this.responseText);
-      Ti.API.info(JSON.stringify(json));
+      Ti.API.debug(JSON.stringify(json));
 
       var user_id = json.user_id;
-      // $.userId.setText(user_id);
-
       getDevice(user_id);
     },
     onerror: function(e) { Ti.API.debug(e.error); }
@@ -38,13 +38,12 @@ function getDevice(user_id) {
   var client = Ti.Network.createHTTPClient({
     onload: function(e) {
       var json = JSON.parse(this.responseText);
-      Ti.API.info(JSON.stringify(json));
+      Ti.API.debug(JSON.stringify(json));
 
       _.each(json, function(device) {
         if (device.device_name === deviceName) {
           var device_id = device.id;
           Ti.API.debug('device_id: ' + device_id);
-          // $.deviceId.setText(device_id);
           getMeasuredValue(user_id, device_id);
         }
       });
@@ -64,18 +63,17 @@ function getMeasuredValue(user_id, device_id) {
   var client = Ti.Network.createHTTPClient({
     onload: function(e) {
       var json = JSON.parse(this.responseText);
-      Ti.API.info('hardware_version: ' + json.hardware_version);
-      Ti.API.info('device_name: ' + json.device_name);
-      // $.deviceName.setText(json.device_name);
-      Ti.API.info('update: ' + json.update);
-      Ti.API.info('alert: ' + json.alert);
-      Ti.API.info('satus: ' + json.status);
-      Ti.API.info('img_exists: ' + json.img_exists);
+      Ti.API.debug('hardware_version: ' + json.hardware_version);
+      Ti.API.debug('device_name: ' + json.device_name);
+      Ti.API.debug('update: ' + json.update);
+      Ti.API.debug('alert: ' + json.alert);
+      Ti.API.debug('satus: ' + json.status);
+      Ti.API.debug('img_exists: ' + json.img_exists);
 
       var items = json.items;
       _.each(items, function(item) {
-        Ti.API.info(item.label);
-        Ti.API.info(JSON.stringify(item) + '\n\n');
+        Ti.API.debug(item.label);
+        Ti.API.debug(JSON.stringify(item) + '\n\n');
       });
 
       getImages(device_id);
@@ -111,7 +109,7 @@ function getImages(device_id) {
 function savePhoto() {
   Ti.Media.saveToPhotoGallery(image, {
     success: function() {
-      alert('保存しました。');
+      Ti.UI.createAlertDialog({title: 'お知らせ', message: '写真を保存しました！'}).show();
     }
   });
 };

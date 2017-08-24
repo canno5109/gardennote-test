@@ -29,9 +29,11 @@ function hideKeyboard() {
 };
 
 function openPhotoDetail(e) {
-  $.photoDetailContainer.setVisible(true);
-  $.photoDetailContainer.animate($.upAnimation);
-  $.photoSlide.setCurrentPage(e.itemIndex);
+  if (e.bindId == 'photo') {
+    $.photoDetailContainer.setVisible(true);
+    $.photoDetailContainer.animate($.upAnimation);
+    $.photoSlide.setCurrentPage(e.itemIndex);
+  }
 };
 
 var overlay = Alloy.createController('cameraOverlay').getView();
