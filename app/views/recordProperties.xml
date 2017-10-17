@@ -43,6 +43,13 @@
                   name:text=""
                   name:color="#464646" />
 
+                <ListItem template="header" header:text="アップロード" />
+                <ListItem template="recordPropertiesTemplate" itemId="upload"
+                  icon:text="\uf093"
+                  icon:color="#fc215d"
+                  name:text="アップロード"
+                  name:color="#464646" />
+
                 <ListItem template="header" header:text="みどりボックス" />
                 <ListItem template="recordPropertiesTemplate" itemId="midori"
                   icon:text="\uf187"

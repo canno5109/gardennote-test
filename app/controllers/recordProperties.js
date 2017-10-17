@@ -24,6 +24,11 @@ function onItemClick(e) {
      Alloy.Globals.recordPropertiesNavigationWindow.openWindow(user_nameWin);
      break;
 
+    case 'upload':
+     var uploadWin = Alloy.createController('upload').getView();
+     Alloy.Globals.recordPropertiesNavigationWindow.openWindow(uploadWin);
+     break;
+
     case 'midori':
       var midoriBoxWin = Alloy.createController('midoriBox').getView();
      Alloy.Globals.recordPropertiesNavigationWindow.openWindow(midoriBoxWin);

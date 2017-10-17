@@ -1,0 +1,13 @@
+'#center': {
+  width: Ti.UI.FILL,
+  height: Ti.UI.FILL,
+  backgroundColor: '#FFFFFF'
+}
+
+'#uploadBtn': {
+  color: '#FFFFFF',
+  backgroundColor: '#FC215D',
+  width: '90%',
+  height: 50,
+  borderRadius: 10
+}

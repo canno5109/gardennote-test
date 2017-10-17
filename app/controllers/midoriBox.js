@@ -1,6 +1,7 @@
 var args = $.args;
 var image;
-var deviceName = '紫波町中村農園';
+// var deviceName = '紫波町中村農園';
+var deviceName = '盛岡農業高校';
 // 岩手県立大学ソフトウェア情報学部A棟
 
 function closeWin() {
@@ -12,7 +13,8 @@ function createLoginSession() {
   Ti.API.debug('ログインセッションを生成しています...');
 
   var url = 'https://midori-cloud.net/api/v2/auth';
-  var parameter = { mail_addr: 'takagi-m@iwate-pu.ac.jp', password: 'midori-t@k@gi' };
+  // var parameter = { mail_addr: 'takagi-m@iwate-pu.ac.jp', password: 'midori-t@k@gi' };
+  var parameter = { mail_addr: 'issei@ikmz.net', password: 'kansa2net' };
 
   var client = Ti.Network.createHTTPClient({
     onload: function(e) {

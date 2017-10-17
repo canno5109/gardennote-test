@@ -1,0 +1,17 @@
+<Alloy>
+  <Window>
+    <View class="body">
+      <View class="navBar">
+        <View class="navItems">
+          <Button class="backBtn" onSingletap="closeWin" />
+          <Label class="navTitle">アップロード</Label>
+        </View>
+      </View>
+      <View class="container">
+        <View id="center">
+          <Button id="uploadBtn" onClick="upload">アップロード</Button>
+        </View>
+      </View>
+    </View>
+  </Window>
+</Alloy>
