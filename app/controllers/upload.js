@@ -19,10 +19,19 @@ function hideKeyboard() {
 };
 
 function upload() {
-  Ti.UI.createAlertDialog({message: '待機中'}).show();
+  var url = "153.126.145.101/~g031m059/system/record";
+  var params = {
+    user_name: "canno",
+    crop_name: "Apple",
+    date: null,
+    work_name: null,
+    work_reason: null,
+    technical_supplement: null,
+    consideration: null,
+    evidence: null,
+    photo: null
+  };
 
-  /*
-  var url = ""; // 対応待ち
   var xhr = Ti.Network.createHTTPClient({
     onload: function() {
       Ti.UI.createAlertDialog({message: 'アップロードが完了しました'}).show();
@@ -31,10 +40,9 @@ function upload() {
       Ti.API.debug(e.error);
     }
   });
-  xhr.open('POST', editCrops_url, false);
-  xhr.setRequestHeader('access_token', access_token);
-  xhr.send(crops_query);
-  xhr = null;
-  */
-};
 
+  xhr.open('POST', url, false);
+  // xhr.setRequestHeader('access_token', access_token);
+  xhr.send(params);
+  xhr = null;
+};
