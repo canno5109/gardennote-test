@@ -26,7 +26,7 @@ function upload() {
       params: [false]
     },
     success: function() {
-      $.workCollection.each(function(item) {
+      $.workCollection.each(function(item, itemIndex) {
         var url = "153.126.145.101/~g031m059/system/record";
 
         var params = {
@@ -43,7 +43,8 @@ function upload() {
 
         var xhr = Ti.Network.createHTTPClient({
           onload: function() {
-            Ti.UI.createAlertDialog({message: 'アップロードが完了しました'}).show();
+            Ti.API.debug("#" + itemIndex + " was Succeed!");
+
             item.set({
               upload: true
             }).save();
