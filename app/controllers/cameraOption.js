@@ -8,9 +8,11 @@ $.photo.setImage(args.image);
 function closeWin() {
   $.cameraOptionNav.close();
   Alloy.Globals.showCamera();
+  $.destroy();
 };
 
 function openRegisterWin() {
-  var registerWin = Alloy.createController('register', {photo: args.image}).getView();
+  var image = args.image.imageAsCompressed(Alloy.Globals.CompressQuality);
+  var registerWin = Alloy.createController('register', {photo: image}).getView();
   Alloy.Globals.cameraOptionNavigationWindow.openWindow(registerWin);
 };

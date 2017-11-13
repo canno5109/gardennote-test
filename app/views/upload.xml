@@ -1,4 +1,5 @@
 <Alloy>
+  <Collection id="cropModel" src="vegetable" instance="true" />
   <Window>
     <View class="body">
       <View class="navBar">

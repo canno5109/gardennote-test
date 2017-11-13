@@ -68,7 +68,7 @@ function addPhoto() {
         technical_supplement: '',
         consideration: '',
         evidence: '',
-        photo: e.media
+        photo: e.media.imageAsCompressed(Alloy.Globals.CompressQuality)
       });
 
       photoRecordModel.save(null, {
@@ -123,13 +123,13 @@ function clickItemOptionDialog(e) {
 };
 
 function deleteItem() {
-  Alloy.Collections.photoRecord.fetch({
+  $.cropModel.fetch({
     query: {
       statement: 'SELECT * FROM photoRecord WHERE id = ?',
       params: [itemId]
     },
     success: function() {
-      var photoRecordModel = Alloy.Collections.photoRecord.first();
+      var photoRecordModel = $.cropModel.first();
       photoRecordModel.destroy({
         success: function() {
           Alloy.Globals.updatePhotoList();
@@ -197,7 +197,7 @@ function filterPhotoList(collection) {
 };
 
 Alloy.Globals.updatePhotoList = function () {
-  Alloy.Collections.photoRecord.fetch({
+  $.cropModel.fetch({
     success: function() {
       updatePhotoList();
       updatePhotoDetail();
@@ -237,4 +237,4 @@ function filterPhotoDetail(collection) {
   return collection.models;
 };
 
-Alloy.Collections.photoRecord.fetch();
+$.cropModel.photoRecord.fetch();

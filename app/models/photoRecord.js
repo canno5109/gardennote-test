@@ -10,7 +10,8 @@ exports.definition = {
       technical_supplement: 'TEXT',
       consideration: 'TEXT',
       evidence: 'TEXT',
-      photo: 'BLOB'
+      photo: 'BLOB',
+      upload: 'BOOLEAN'
     },
     adapter: {
       type: 'sql',

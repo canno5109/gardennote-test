@@ -61,7 +61,7 @@ function updateData() {
     return;
   }
 
-  Alloy.Collections.photoRecord.fetch({
+  $.cropModel.fetch({
     query: {
       statement: 'SELECT * FROM photoRecord WHERE id = ?',
       params: [args.itemId]
@@ -73,7 +73,7 @@ function updateData() {
       var consideration = $.considerationForm.value === '記録の考察を記入してください' ? '' : $.considerationForm.value;
 
 
-      var photoRecordCollection = Alloy.Collections.photoRecord.first();
+      var photoRecordCollection = $.cropModel.first();
       photoRecordCollection.set({
         user_name: $.userNameForm.value,
         date: date,
