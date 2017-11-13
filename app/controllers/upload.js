@@ -20,8 +20,6 @@ function hideKeyboard() {
 };
 
 function upload() {
-  return;
-
   $.workCollection.fetch({
     query: {
       statement: 'SELECT *, upload as upload2 FROM photoRecord WHERE upload IS NULL OR upload2 = ?',
