@@ -20,32 +20,35 @@ function hideKeyboard() {
 };
 
 function upload() {
+  return;
+
   $.workCollection.fetch({
     query: {
-        statement: 'SELECT *, upload as upload2 FROM photoRecord WHERE upload IS NULL OR upload2 = ?',
-        params: [false]
-      },
-      success: function() {
-        $.workCollection.each(function(item) {
-          Ti.API.debug(item.get("date"));
-        });
-        /*
+      statement: 'SELECT *, upload as upload2 FROM photoRecord WHERE upload IS NULL OR upload2 = ?',
+      params: [false]
+    },
+    success: function() {
+      $.workCollection.each(function(item) {
         var url = "153.126.145.101/~g031m059/system/record";
+
         var params = {
-          user_name: "canno",
-          crop_name: "Apple",
-          date: null,
-          work_name: null,
-          work_reason: null,
-          technical_supplement: null,
-          consideration: null,
-          evidence: null,
-          photo: null
+          user_name: Ti.App.Properties.getString('user_name'),
+          crop_name: item.get("crop_name"),
+          date: item.get("date"),
+          work_name: item.get("work"),
+          work_reason: item.get("work_reason"),
+          technical_supplement: item.get("technical_supplement"),
+          consideration: item.get("consideration"),
+          evidence: item.get("evidence"),
+          photo: item.get("photo")
         };
 
         var xhr = Ti.Network.createHTTPClient({
           onload: function() {
             Ti.UI.createAlertDialog({message: 'アップロードが完了しました'}).show();
+            item.set({
+              upload: true
+            }).save();
           },
           onerror: function(e) {
             Ti.API.debug(e.error);
@@ -55,8 +58,9 @@ function upload() {
         xhr.open('POST', url, false);
         // xhr.setRequestHeader('access_token', access_token);
         xhr.send(params);
-        xhr = null; */
-      },
-      error: function() {}
+        xhr = null;
+      });
+    },
+    error: function() {}
   });
 };
