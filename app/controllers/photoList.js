@@ -123,13 +123,13 @@ function clickItemOptionDialog(e) {
 };
 
 function deleteItem() {
-  $.cropModel.fetch({
+  $.workCollection.fetch({
     query: {
       statement: 'SELECT * FROM photoRecord WHERE id = ?',
       params: [itemId]
     },
     success: function() {
-      var photoRecordModel = $.cropModel.first();
+      var photoRecordModel = $.workCollection.first();
       photoRecordModel.destroy({
         success: function() {
           Alloy.Globals.updatePhotoList();
@@ -197,7 +197,7 @@ function filterPhotoList(collection) {
 };
 
 Alloy.Globals.updatePhotoList = function () {
-  $.cropModel.fetch({
+  $.workCollection.fetch({
     success: function() {
       updatePhotoList();
       updatePhotoDetail();
@@ -237,4 +237,4 @@ function filterPhotoDetail(collection) {
   return collection.models;
 };
 
-$.cropModel.photoRecord.fetch();
+$.workCollection.fetch();

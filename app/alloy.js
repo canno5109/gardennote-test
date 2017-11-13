@@ -1,5 +1,4 @@
 Alloy.Globals.moment = require('alloy/moment');
-Alloy.Globals.ImageFactory = require('ti.imagefactory');
 
 Alloy.Globals.tabGroup;
 Alloy.Globals.customCameraContainer; // カメラボタンのcontainer

@@ -1,5 +1,5 @@
 <Alloy>
-  <Collection id="cropModel" src="vegetable" instance="true" />
+  <Collection id="workCollection" src="photoRecord" instance="true" />
   <Window>
     <View class="body">
       <View class="navBar">

@@ -20,13 +20,13 @@ function hideKeyboard() {
 };
 
 function upload() {
-  $.cropModel.fetch({
+  $.workCollection.fetch({
     query: {
         statement: 'SELECT *, upload as upload2 FROM photoRecord WHERE upload IS NULL OR upload2 = ?',
         params: [false]
       },
       success: function() {
-        $.cropModel.each(function(item) {
+        $.workCollection.each(function(item) {
           Ti.API.debug(item.get("date"));
         });
         /*
