@@ -1,7 +1,7 @@
 var args = $.args;
 var currentKeyboardOwner = undefined;
 
-$.themeArea.setValue(Ti.App.Properties.getString('theme'));
+$.themeArea.setValue(Ti.App.Properties.getObject('user').theme);
 
 function closeWin() {
   $.theme.close();
@@ -21,11 +21,15 @@ function hideKeyboard() {
 };
 
 function updateTheme() {
-  var value = $.themeArea.getValue();
+  let value = $.themeArea.getValue();
   if (value == '') {
-    Ti.App.Properties.setString('theme', '');
+    let user = Ti.App.Properties.getObject('user');
+    user.theme = null;
+    Ti.App.Properties.setObject('user', user);
   } else {
-    Ti.App.Properties.setString('theme', value);
+    let user = Ti.App.Properties.getObject('user');
+    user.theme = value;
+    Ti.App.Properties.setObject('user', user);
   }
   closeWin();
 };

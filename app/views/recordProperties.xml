@@ -9,9 +9,19 @@
             </View>
           </View>
           <View class="container">
-            <ListView id="recordPropertiesListView" defaultItemTemplate="recordPropertiesTemplate" onItemclick="onItemClick">
+            <ListView id="recordPropertiesListView" defaultItemTemplate="canSelectTemplate" onItemclick="onItemClick">
               <Templates>
-                <ItemTemplate name="recordPropertiesTemplate" class="recordPropertiesTemplate">
+                <ItemTemplate name="canSelectTemplate" class="canSelectTemplate">
+                  <View class="itemContainer">
+                    <View class="iconContainer">
+                      <Label bindId="icon" class="icon" />
+                    </View>
+                    <View class="messageContainer">
+                      <Label bindId="name" class="name" />
+                    </View>
+                  </View>
+                </ItemTemplate>
+                <ItemTemplate name="noSelectTemplate" class="noSelectTemplate">
                   <View class="itemContainer">
                     <View class="iconContainer">
                       <Label bindId="icon" class="icon" />
@@ -29,7 +39,7 @@
               </Templates>
               <ListSection id="photoListSection">
                 <ListItem template="header" header:text="テーマ" />
-                <ListItem template="recordPropertiesTemplate" itemId="theme"
+                <ListItem template="canSelectTemplate" itemId="theme"
                   height="80"
                   icon:text="\uf005"
                   icon:color="#ffd700"
@@ -37,28 +47,28 @@
                   name:color="#464646" />
 
                 <ListItem template="header" header:text="ユーザ名" />
-                <ListItem template="recordPropertiesTemplate" itemId="user_name"
+                <ListItem template="noSelectTemplate" itemId="user_name"
                   icon:text="\uf007"
                   icon:color="#464646"
                   name:text=""
                   name:color="#464646" />
 
                 <ListItem template="header" header:text="アップロード" />
-                <ListItem template="recordPropertiesTemplate" itemId="upload"
+                <ListItem template="canSelectTemplate" itemId="upload"
                   icon:text="\uf093"
                   icon:color="#fc215d"
                   name:text="アップロード"
                   name:color="#464646" />
 
                 <ListItem template="header" header:text="みどりボックス" />
-                <ListItem template="recordPropertiesTemplate" itemId="midori"
+                <ListItem template="canSelectTemplate" itemId="midori"
                   icon:text="\uf187"
                   icon:color="#BFBFBF"
                   name:text="農地カメラ"
                   name:color="#464646" />
 
                 <ListItem template="header" header:text="お問い合わせ" />
-                <ListItem template="recordPropertiesTemplate" itemId="mail"
+                <ListItem template="canSelectTemplate" itemId="mail"
                   icon:text="\uf0e0"
                   icon:color="#6699ff"
                   name:text="メールで連絡"

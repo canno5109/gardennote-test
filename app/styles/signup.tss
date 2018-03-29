@@ -1,0 +1,172 @@
+'#signupWin': {
+  modal: true
+}
+
+'#verticalContainer': {
+  layout: 'vertical',
+  width: Ti.UI.FILL,
+  height: Ti.UI.FILL,
+  backgroundColor: '#FFFFFF'
+}
+
+'.registerFormTitle': {
+  color: '#464646',
+  font: {fontSize: 18},
+  width: '90%',
+  height: 20,
+  top: 10,
+  textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT
+}
+
+'TextField': {
+  color: '#464646',
+  font: {fontSize: 16},
+  width: '90%',
+  height: 40,
+  top: 5,
+  borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
+  borderColor: '#e6e6e6',
+  borderRadius: 5,
+  autocorrect: false,
+  returnKeyType: Ti.UI.RETURNKEY_DONE,
+  clearButtonMode: Titanium.UI.INPUT_BUTTONMODE_ONFOCUS,
+  maxLength: 20
+}
+
+'TextArea': {
+  color: '#464646',
+  font: {fontSize: 16},
+  width: '90%',
+  height: 100,
+  top: 5,
+  borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
+  borderColor: '#e6e6e6',
+  borderRadius: 5,
+  autocorrect: false,
+  returnKeyType: Ti.UI.RETURNKEY_DONE,
+  maxLength: 150
+}
+
+'.horizontalFormContainer': {
+  width: '90%',
+  height: Ti.UI.SIZE
+}
+
+/* 名前入力フォーム */
+'.firstNameForm': {
+  left: 0,
+  width: '49%'
+},
+'.lastNameForm': {
+  right: 0,
+  width: '49%'
+}
+
+/* パスワード入力フォーム */
+'#passwordForm': {
+  passwordMask: true
+},
+'#passwordAgainForm': {
+  passwordMask: true
+}
+
+/* 生年月日入力フォーム */
+'.day_of_birthFormContainer': {
+  top: 5,
+  width: '90%',
+  height: 40,
+  borderColor: '#e6e6e6',
+  borderRadius: 5
+},
+'#day_of_birth': {
+  editable: false,
+  color: '#464646',
+  backgroundColor: '#FFFFFF',
+  font: {fontSize: 16},
+  borderColor: '#FFFFFF',
+  returnKeyType: null,
+  clearButtonMode: null,
+  width: Ti.UI.FILL,
+  top: 0,
+  right: 40
+},
+'#day_of_birthBtn': {
+  title: '\u25BC',
+  color: '#000000',
+  font: {fontSize: 12},
+  right: 10,
+  width: 30
+}
+
+/* Picker */
+'#pickerBox': {
+  bottom: 0,
+  width: Ti.UI.FILL,
+  height: Ti.UI.SIZE,
+  layout: 'vertical',
+  backgroundColor : '#FFFFFF',
+  bubbleParent: false,
+  visible: false,
+  zIndex: 1
+},
+'#pickerToolBar': {
+  width: Ti.UI.FILL,
+  height: 45,
+  bubbleParent: false,
+  backgroundColor : '#009900',
+  barColor: '#009900'
+},
+'#pickerCancel': {
+  title: 'キャンセル',
+  left: 5,
+  width: Ti.UI.SIZE,
+  height: Ti.UI.SIZE,
+  color: '#FFFFFF',
+  backgroundColor: 'transparent'
+},
+'#pickerDone': {
+  title: '完了',
+  right: 5,
+  width: Ti.UI.SIZE,
+  height: Ti.UI.SIZE,
+  systemButton: Ti.UI.iOS.SystemButton.DONE,
+  color: '#FFFFFF',
+  backgroundColor: 'transparent'
+},
+'Picker': {
+  font: {fontSize: 18},
+  selectionIndicator: true,
+  type: Ti.UI.PICKER_TYPE_DATE,
+  selectionIndicator: true,
+  useSpinner: true,
+  backgroundColor: '#FFFFFF'
+}
+
+'#signupBtn': {
+  color: '#ffffff',
+  font: {fontSize: 20},
+  backgroundColor: '#66cdaa',
+  borderRadius: 5,
+  selectedColor: 'red',
+  width: '90%',
+  height: 50,
+  top: 20
+}
+
+'#loadingView': {
+  width: '99%',
+  height: '99%',
+  backgroundColor: 'transparent',
+  bubbleParent: false,
+  visible: false,
+  zIndex: 1
+},
+'#loadingIndicator': {
+  width: 60,
+  height: 60,
+  layout: 'composite',
+  backgroundColor: '#FFFFFF',
+  borderRadius: 10,
+  indicatorColor: '#009900',
+  style: Ti.UI.ActivityIndicatorStyle.BIG
+}

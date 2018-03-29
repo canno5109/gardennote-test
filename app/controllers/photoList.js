@@ -3,10 +3,12 @@ var itemId, user_name, date, crop_name, work, work_reason, technical_supplement,
 Alloy.Globals.photoListNavigationWindow = $.photoListNav;
 
 
+/* メモリリーク解放 */
 function cleanup() {
   $.destroy();
 };
 
+/* リストに作業記録がない場合背景にメッセージを表示 */
 function showRecordingFastestMessage() {
   if ($.photoListSection.items.length == 0) {
     $.recordingFastestMessageView.setVisible(true);
@@ -28,6 +30,7 @@ function hideKeyboard() {
   }
 };
 
+/* 写真詳細画面を表示 */
 function openPhotoDetail(e) {
   if (e.bindId == 'photo') {
     $.photoDetailContainer.setVisible(true);
@@ -36,6 +39,7 @@ function openPhotoDetail(e) {
   }
 };
 
+/* カメラ起動準備 */
 var overlay = Alloy.createController('cameraOverlay').getView();
 Alloy.Globals.showCamera = function() {
   if (!ENV_DEV) {
@@ -56,11 +60,12 @@ Alloy.Globals.showCamera = function() {
   }
 };
 
+/* リストにカメラロールから写真を追加 */
 function addPhoto() {
   Ti.Media.openPhotoGallery({
     success: function(e) {
       var photoRecordModel = Alloy.createModel('photoRecord', {
-        user_name: Ti.App.Properties.getString('user_name'),
+        user_name: Ti.App.Properties.getObject('user').first_name_kanji + ' ' + Ti.App.Properties.getObject('user').last_name_kanji,
         date: Alloy.Globals.moment().format('YYYY-MM-DD'),
         crop_name: 'りんご',
         work: '摘果',
@@ -84,6 +89,7 @@ function addPhoto() {
   });
 };
 
+/* 作業記録のオプションダイアログを表示 */
 function showItemOptionDialog() {
   itemId = this.itemId;
   user_name = this.user_name;
@@ -98,6 +104,7 @@ function showItemOptionDialog() {
   $.itemOptionDialog.show();
 };
 
+/* 作業記録のオプションダイアログ選択 */
 function clickItemOptionDialog(e) {
   switch (e.index) {
     case 0:
@@ -122,14 +129,15 @@ function clickItemOptionDialog(e) {
   }
 };
 
+/* 指定した作業記録を削除する */
 function deleteItem() {
-  $.workCollection.fetch({
+  Alloy.Collections.photoRecord.fetch({
     query: {
       statement: 'SELECT * FROM photoRecord WHERE id = ?',
       params: [itemId]
     },
     success: function() {
-      var photoRecordModel = $.workCollection.first();
+      var photoRecordModel = Alloy.Collections.photoRecord.first();
       photoRecordModel.destroy({
         success: function() {
           Alloy.Globals.updatePhotoList();
@@ -139,6 +147,7 @@ function deleteItem() {
   });
 };
 
+/* DBの表示処理 */
 function transformPhotoList(model) {
   var transform = model.toJSON();
   transform.datetime = transform.date;
@@ -189,15 +198,18 @@ function transformPhotoList(model) {
 
   transform.photo = cropView.toImage();
 
+  Ti.API.debug(transform);
   return transform;
 };
 
+/* 表示するDBのフィルター設定 */
 function filterPhotoList(collection) {
   return collection.models;
 };
 
+/* リストを更新する */
 Alloy.Globals.updatePhotoList = function () {
-  $.workCollection.fetch({
+  Alloy.Collections.photoRecord.fetch({
     success: function() {
       updatePhotoList();
       updatePhotoDetail();
@@ -237,4 +249,4 @@ function filterPhotoDetail(collection) {
   return collection.models;
 };
 
-$.workCollection.fetch();
+Alloy.Collections.photoRecord.fetch();

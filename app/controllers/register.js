@@ -1,9 +1,11 @@
 var args = $.args;
 var currentKeyboardOwner = undefined;
 var selectionDate = Alloy.Globals.moment().format('YYYY/M/D');
+var first_name_kanji = Ti.App.Properties.getObject('user').first_name_kanji;
+var last_name_kanji = Ti.App.Properties.getObject('user').last_name_kanji;
 
 
-$.userNameForm.setValue(Ti.App.Properties.getString('user_name'));
+$.userNameForm.setValue(first_name_kanji + ' ' + last_name_kanji);
 $.dateForm.setText(selectionDate);
 
 function cleanup() {

@@ -14,10 +14,13 @@ Alloy.Globals.showCamera; // カメラ起動
 
 Alloy.CFG.photoItemSize = Ti.Platform.displayCaps.platformWidth * 0.95;
 
-Alloy.Globals.CompressQuality = 0.75;
+Alloy.Globals.CompressQuality = 0.75; // 写真圧縮
 
+/* 作業記録の写真の圧縮 */
 if (!Ti.App.Properties.getBool("imageCompressed")) {
   var photoRecord = Alloy.createCollection("photoRecord");
+  Ti.API.debug(photoRecord);
+
   photoRecord.fetch({
     success: function() {
       photoRecord.each(function(item) {
@@ -27,6 +30,7 @@ if (!Ti.App.Properties.getBool("imageCompressed")) {
 
         Ti.App.Properties.setBool("imageCompressed", true);
       });
-    }
+    },
+    error: function() {}
   });
 }

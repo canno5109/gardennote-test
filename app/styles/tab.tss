@@ -1,5 +1,5 @@
 '#tabGroup': {
-  modal: true,
+  // modal: true,
   tabsBackgroundColor: '#F5F5F5',
   backgroundColor: '#000000',
   tintColor: '#009900',

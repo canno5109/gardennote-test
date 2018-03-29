@@ -34,7 +34,7 @@
             <Label class="registerFormTitle">農作業</Label>
             <Label class="required">※必須</Label>
           </View>
-          <TextField id="workForm" value="摘果" hintText="農作業名を入力してください" onClick="setKeyboardOwner" />
+          <TextField id="workForm" value="" hintText="農作業名を入力してください" onClick="setKeyboardOwner" />
 
           <View class="registerFormTitleContainer">
             <Label class="registerFormTitle">作業理由</Label>

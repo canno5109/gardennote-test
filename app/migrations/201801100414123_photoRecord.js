@@ -1,6 +1,6 @@
 migration.up = function(migrator) {
   try {
-    migrator.db.execute('ALTER TABLE photoRecord ADD COLUMN upload BOOLEAN;');
+    migrator.db.execute('ALTER TABLE ' + migrator.table + ' ADD COLUMN upload BOOLEAN;');
   } catch(e) {
     migrator.dropTable();
     migrator.createTable({
@@ -24,4 +24,3 @@ migration.up = function(migrator) {
 migration.down = function(migrator) {
   migrator.db.execute('ALTER TABLE photoRecord DROP COLUMN upload;');
 };
-

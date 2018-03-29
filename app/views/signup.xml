@@ -1,0 +1,58 @@
+<Alloy>
+  <Window id="signupWin" onClick="hideKeyboard" onClose="cleanup">
+    <View class="body">
+      <View class="navBar">
+        <View class="navItems">
+          <Label class="navTitle">新規登録</Label>
+        </View>
+      </View>
+      <View class="container">
+        <ScrollView id="verticalContainer">
+          <!-- ID入力フォーム -->
+          <Label class="registerFormTitle">ID</Label>
+          <TextField id="idForm" hintText="半角英数字" onClick="setKeyboardOwner" />
+
+          <!-- PASSWORD入力フォーム -->
+          <Label class="registerFormTitle">パスワード</Label>
+          <TextField id="passwordForm" hintText="半角英数字" onClick="setKeyboardOwner" />
+          <Label class="registerFormTitle">パスワード(確認用)</Label>
+          <TextField id="passwordAgainForm" hintText="半角英数字" onClick="setKeyboardOwner" />
+
+          <!-- 名前入力フォーム -->
+          <Label class="registerFormTitle">名前</Label>
+          <View class="horizontalFormContainer">
+            <TextField id="first_name_kanji" class="firstNameForm" hintText="性(漢字)" onClick="setKeyboardOwner" />
+            <TextField id="last_name_kanji" class="lastNameForm" hintText="名(漢字)" onClick="setKeyboardOwner" />
+          </View>
+          <View class="horizontalFormContainer">
+            <TextField id="first_name_kana" class="firstNameForm" hintText="性(カナ)" onClick="setKeyboardOwner" />
+            <TextField id="last_name_kana" class="lastNameForm" hintText="名(カナ)" onClick="setKeyboardOwner" />
+          </View>
+
+          <!-- 生年月日入力フォーム -->
+          <Label class="registerFormTitle">生年月日</Label>
+          <View class="day_of_birthFormContainer" onSingletap="openPicker">
+            <TextField id="day_of_birth" hintText="1990-12-31" />
+            <Button id="day_of_birthBtn" />
+          </View>
+
+          <Button id="signupBtn" onSingletap="checkFormValue">登録する</Button>
+
+          <!-- キーボード表示用余白 -->
+          <View width="Ti.UI.FILL" height="300" top="10" />
+        </ScrollView>
+
+        <View id="pickerBox">
+          <View id="pickerToolBar">
+            <Button id="pickerCancel" onSingletap="pickerCancelClick" />
+            <Button id="pickerDone" onSingletap="pickerDoneClick" />
+          </View>
+          <Picker id="picker" onChange="setDate" />
+        </View>
+      </View>
+    </View>
+    <View id="loadingView">
+      <ActivityIndicator id="loadingIndicator" />
+    </View>
+  </Window>
+</Alloy>

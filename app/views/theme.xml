@@ -4,12 +4,12 @@
       <View class="navBar">
         <View class="navItems">
           <Button class="backBtn" onSingletap="closeWin" />
-          <Label class="navTitle">テーマ</Label>
+          <Label class="navTitle">実習テーマ</Label>
         </View>
       </View>
       <View class="container">
         <View class="center">
-          <Label id="advice">作物観察記録を利用する目的やテーマを入力してください</Label>
+          <Label id="advice">あなたの実習の目的やテーマを入力してください</Label>
           <View class="areaContainer">
             <TextArea id="themeArea" class="inputArea" onClick="setKeyboardOwner" />
           </View>

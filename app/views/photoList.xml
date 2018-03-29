@@ -1,5 +1,5 @@
 <Alloy>
-  <Collection id="workCollection" src="photoRecord" instance="true" />
+  <Collection src="photoRecord" />
   <Tab title="写真一覧" icon="/icons/images.png">
     <NavigationWindow id="photoListNav">
       <Window id="photoListWin" onClose="cleanup" onClick="hideKeyboard" onFocus="showRecordingFastestMessage">
@@ -49,7 +49,7 @@
                 </ItemTemplate>
               </Templates>
               <ListSection id="photoListSection"
-                dataCollection="$.workCollection"
+                dataCollection="photoRecord"
                 dataTransform="transformPhotoList"
                 dataFilter="filterPhotoList"
                 dataFunction="updatePhotoList" >
@@ -84,7 +84,7 @@
         <View id="photoDetailContainer">
           <Button id="hidePhotoDetailBtn" onSingletap="hidePhotoDetail" />
           <ScrollableView id="photoSlide"
-            dataCollection="$.workCollection"
+            dataCollection="photoRecord"
             dataTransform="transformPhotoDetail"
             dataFilter="filterPhotoDetail"
             dataFunction="updatePhotoDetail">

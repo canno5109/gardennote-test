@@ -25,12 +25,20 @@
   selectionStyle: Titanium.UI.iOS.ListViewCellSelectionStyle.NONE
 }
 
-'.recordPropertiesTemplate': {
+'.canSelectTemplate': {
   width: Ti.UI.FILL,
   height: 50,
   backgroundColor: '#FFFFFF',
   selectedBackgroundColor: '#E6E6E6',
   accessoryType: Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE
+}
+
+'.noSelectTemplate': {
+  width: Ti.UI.FILL,
+  height: 50,
+  backgroundColor: '#FFFFFF',
+  selectedBackgroundColor: '#E6E6E6',
+  selectionStyle: Titanium.UI.iOS.ListViewCellSelectionStyle.NONE
 }
 
 '.headerContainer': {

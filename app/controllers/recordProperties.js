@@ -3,12 +3,12 @@ Alloy.Globals.recordPropertiesNavigationWindow = $.recordPropertiesNav;
 
 function updateRecordProperties() {
   var themeItem = $.photoListSection.getItemAt(1);
-  themeItem.name.text = Ti.App.Properties.getString('theme') == '' ? '未入力' : Ti.App.Properties.getString('theme');
-  themeItem.name.color = Ti.App.Properties.getString('theme') == '' ? '#808080' : '#464646';
+  themeItem.name.text = Ti.App.Properties.getObject('user').theme == null ? '未入力' : Ti.App.Properties.getObject('user').theme;
+  themeItem.name.color = Ti.App.Properties.getObject('user').theme == null ? '#808080' : '#464646';
   $.photoListSection.updateItemAt(1, themeItem, {animated: false});
 
   var user_nameItem = $.photoListSection.getItemAt(3);
-  user_nameItem.name.text = Ti.App.Properties.getString('user_name');
+  user_nameItem.name.text = Ti.App.Properties.getObject('user').first_name_kanji + ' ' + Ti.App.Properties.getObject('user').last_name_kanji;
   $.photoListSection.updateItemAt(3, user_nameItem, {animated: false});
 };
 
@@ -17,11 +17,6 @@ function onItemClick(e) {
     case 'theme':
       var themeWin = Alloy.createController('theme').getView();
      Alloy.Globals.recordPropertiesNavigationWindow.openWindow(themeWin);
-     break;
-
-    case 'user_name':
-     var user_nameWin = Alloy.createController('user_name').getView();
-     Alloy.Globals.recordPropertiesNavigationWindow.openWindow(user_nameWin);
      break;
 
     case 'upload':
